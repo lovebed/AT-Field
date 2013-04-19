@@ -6,7 +6,7 @@
     "manifest_version": 2,
     "minimum_chrome_version": "18",
 
-    "options_page": "options/options.html",
+    "options_page": "frontend/options.html",
     "icons": {
         "128": "img/icon128.png",
         "16": "img/icon16.png",
@@ -18,6 +18,6 @@
     },
     "browser_action": {
         "default_icon": "img/icon48.png",
-        "default_popup": "popup.html"
+        "default_popup": "frontend/popup.html"
     }
 }
