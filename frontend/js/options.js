@@ -1,8 +1,9 @@
-var p = {
+var o = {
 
 }
 $(document).ready(function () {
 //    p.init();
-//    $("#tabs").tabs();
+    $("#tabs").tabs();
 //    $("#accordion").accordion();
+//    $("#menu").menu();
 });
