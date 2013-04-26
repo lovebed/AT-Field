@@ -64,3 +64,40 @@ optionsGetKey = function(key){
     }
     return optionsList.key;
 }
+
+
+//Return Value:true,false
+change = function(key,num,attribute,value){
+    var list = optionsGetList(key);
+    list[num].attribute=value;
+    storageSet(key,list);
+    return true; 
+
+}
+
+//Return Value:true,false
+delete = function(key,num){
+    var list = optionsGetList(key);
+    if(num> list.length) return false;
+    list.splice(num,1);
+    storageSet(key,list);
+    return true;
+}
+
+
+//Return Value:num,num[0]:find number,num[j]:NO.J has value
+find = function(key,attribute,value){
+    var list = optionsGetList(key);
+    var num;
+    var i=0;
+    var j=0;
+    var re =new RegExp(value);
+    for (var i = list.length - 1; i >= 0; i--) {
+        if(re.text(list[i].attribute))
+          {
+            num[j+1]=i;j++;
+           } 
+    }
+    num[0]=j;
+    return num;
+}
