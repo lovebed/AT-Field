@@ -67,16 +67,16 @@ optionsGetKey = function(key){
 
 
 //Return Value:true,false
-change = function(key,num,attribute,value){
+changeListAttribute = function(key,num,attribute,value){
     var list = optionsGetList(key);
-    list[num].attribute=value;
+    list[num][attribute]=value;
     storageSet(key,list);
     return true; 
 
 }
 
 //Return Value:true,false
-delete = function(key,num){
+deleteList = function(key,num){
     var list = optionsGetList(key);
     if(num> list.length) return false;
     list.splice(num,1);
@@ -86,14 +86,14 @@ delete = function(key,num){
 
 
 //Return Value:num,num[0]:find number,num[j]:NO.J has value
-find = function(key,attribute,value){
+findListattribute = function(key,attribute,value){
     var list = optionsGetList(key);
     var num;
     var i=0;
     var j=0;
     var re =new RegExp(value);
     for (var i = list.length - 1; i >= 0; i--) {
-        if(re.text(list[i].attribute))
+        if(re.text(list[i][attribute]))
           {
             num[j+1]=i;j++;
            } 
