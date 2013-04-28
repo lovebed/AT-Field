@@ -58,7 +58,7 @@ optionsGetList = function(key){
 //Return Value: value if the options key exists.
 optionsGetKey = function(key){
     var optionsList=storageGet("optionsStorage");
-    if(optionsList.key == undefined){
+    if(optionsList[key] == undefined){
         console.log("Invalid optionsGetKey Call: " + key);
         return undefined;
     }
