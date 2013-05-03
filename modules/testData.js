@@ -26,6 +26,6 @@ for(var i=0;i<10;i++){
     testWhiteList[i] = "domain"+i;
 }
 
-console.log(testWhiteList);
-console.log(testCookieList);
-console.log(testWebReqList);
+storageSet("webReqRuleList",testWebReqList);
+storageSet("cookieRuleList",testCookieList);
+storageSet("domainWhiteList",testWhiteList);
