@@ -26,6 +26,10 @@ for(var i=0;i<10;i++){
     testWhiteList[i] = "domain"+i;
 }
 
+testWebReqList[9]= new webReqRule("http://zodiacg.net/js/gallery.js","");
+
 storageSet("webReqRuleList",testWebReqList);
 storageSet("cookieRuleList",testCookieList);
 storageSet("domainWhiteList",testWhiteList);
+
+ruleMan.init();
