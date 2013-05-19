@@ -15,8 +15,7 @@ padding:0px;
 	margin-bottom: 10px;
 	background-color:#00CCFF;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f4f9ff), color-stop(1, #e5ecf9));
-	background: -webkit-gradient(linear, left top, left bottom, 
-		color-stop(0, #fff), color-stop(0.48, hsl(217, 73%, 97%)), color-stop(0.51, hsl(217, 62%, 95%)));
+	background: -webkit-gradient(linear, left top, left bottom, olor-stop(0, #fff), color-stop(0.48, hsl(217, 73%, 97%)), color-stop(0.51, hsl(217, 62%, 95%)));
 	-webkit-box-shadow: 0px 1px 2px #ddd;
 	top:20px;
 }
@@ -26,7 +25,6 @@ h1
  test-align:center;
  top:20px;
  
- 
 }
 
 #mainer{
@@ -34,4 +32,29 @@ h1
 	position:relative;
 	top: 10px;
 	
+}
+.rulesTable {
+border-spacing: 0px;
+-webkit-box-shadow: 0px 0px 2px #ddd;
+}
+tr {
+display: table-row;
+vertical-align: inherit;
+border-color: inherit;
+}
+.rulesTable th {
+border-left: solid 1px #e2e7e9;
+border-bottom: solid 1px #d7dbe0;
+font-weight: bold;
+color: #6e809d;
+white-space: nowrap;
+overflow: hidden;
+}
+table {
+border-collapse: separate;
+border-spacing: 2px;
+border-color: blue;
+}
+.templateRow {
+display: none;
 }

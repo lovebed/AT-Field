@@ -3,36 +3,36 @@
 <head>
 	<meta charset="utf-8">
 	<title>AntiField</title>
-	<script type="text/javascript" src= js/jquery-1.9.1.js></script>
-	<script type="text/javascript" src= js/jquery-ui-1.10.2.custom.min.js></script>
-	<script type="text/javascript" src="js/options.js"></script>
-	
+	<script type="text/javascript" src= "js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src= "js/jquery-ui-1.10.2.custom.min.js"></script>
+	<script type="text/javascript" src= "../modules/extensionStorage.js"></script>	
+	<script type="text/javascript" src= "../modules/testData.js"></script>
+
+	<script type="text/javascript" src= "js/options.js"></script>
 	<link rel=stylesheet type=text/css href=css/smoothness/jquery-ui-1.10.2.custom.min.css />
 	<link rel=stylesheet type=text/css href=css/options.css />
 	<style type="text/css">
-	li.ui-state-default{}
-	
-	
+	li.ui-state-default{}	
 	</style>
 	
 </head>
 <body>
 	<table align="center" width="70%">
-	<tr id="header">
+	    <tr id="header">
 			<td height="80">
 				<div>
 					<h1 style="text-align:center" >AntiField</h1>
 				</div>
-	  </td>
-	  </tr>
+	        </td>
+	    </tr>
 	</table>
-	<table align="center" width="70%" id="mainer">
-		
+
+	<table align="center" width="70%" id="mainer">		
 		<tr>
 			<td>
-					<div id="tabs">
+				<div id="tabs">
 						<ul>
-							<li>
+						    <li>
 								<a href="#tab1">Home</a>
 							</li>
 
@@ -40,52 +40,151 @@
 								<a href="#tab2">webReqRuleList</a>
 							</li>
 							<li>
-								<a href="#tab3">CookieRuleLis</a>
+								<a href="#tab3">CookieRuleList</a>
 							</li>
 							<li>
-								<a href="#tab4">Config</a>
+								<a href="#tab4">domainWhiteList</a>
 							</li>
 						</ul>
 						<div id="tab1">
-							<table>
-								<tr>
+							<table id="rulesTable" class="rulesTable">
+								<tr class="tableHeader">
+									<th style="width:18%">Name</th>
+									<th style="width:45%">
+										<span>pattern</span>
+									</th>
+									<th style="width:16%">
+										<span>domain</span>
+									</th>
+									<th style="width:21%">
+										<span>flag</span>
+									</th>
+									<th style="width:28px">删除规则</th>
+								</tr>
+
+								<tr class="templateRow">
+									<td class = "webRuleName">
+									
+									</td>
+									<td class = "webRulePattern">
+
+									</td>
 									<td>
-										表格1
+										<div>
+											lds
+										</div>
+									</td>
+									<td>
+									</td>
+									<td>
+
 									</td>
 								</tr>
-							</table>
-						</div>
-						<div id="tab2">
-							<table>
-								<tr>
+								<tr class="defaultRow">
 									<td>
-										表格2
+										<div>
+											<span class="ruleName" data-i18n-content="options_defaultRule">Default Rule</span>
+											<span data-help="defaultRule"/>
+										</div>
+									</td>
+									<td colspan="2">
+										<div>
+											<span class="urlPattern" data-i18n-content="options_defaultRuleUrlPattern">All URLs that doesn't match any other pattern</span>
+										</div>
+									</td>
+									<td>
+										<div>
+											<select id="cmbDefaultRuleProfile" name="profileId"></select>
+										</div>
 									</td>
 								</tr>
-							</table>
+								<button class="button" id="btnNewRule"> 
+									<span>New Rule</span>
+								</button>
+						</table>
 
 						</div>
-						<div id="tab3">
-							<table>
-								<tr>
+						<div id="tab2">
+							<table id="webReqRulesTable" class="rulesTable">
+								<tr class="tableHeader">
+									<th style="width:45%">
+										<span>pattern</span>
+									</th>
+									<th style="width:16%">
+										<span>domain</span>
+									</th>
+									<th style="width:21%">
+										<span>flag</span>
+									</th>
+									<th style="width:10%">删除规则</th>
+								</tr>
+								<tr id="templateWebReqRow" class = "templateRow">
+									<td class = "pattern">
+									
+									</td>
+									<td class = "domain">
+
+									</td>
+									<td class = "flag">
+
+									</td>
 									<td>
-										表格3
+									</td>
+									<td>
+
+									</td>
+								</tr>
+							</table>
+							<button class="button" id="testBTN"> 
+									<span>New Rule</span>
+							</button>
+						</div>
+						<div id="tab3">
+							<table id="cookieRulesTable" class="rulesTable">
+								<tr class="tableHeader">
+									<th style="width:45%">
+										<span>domain</span>
+									</th>
+									<th style="width:16%">
+										<span>keypat</span>
+									</th>
+									<th style="width:10%">删除规则</th>
+								</tr>
+								<tr id="templateCookieRow" class = "templateRow">
+									<td class = "domain">
+
+									</td>
+
+									<td class = "keypat">
+									</td>
+									<td>
+
 									</td>
 								</tr>
 							</table>
 						</div>
 						<div id="tab4">
-							<table>
-								<tr>
+							<table id="whiteRulesTable" class="rulesTable">
+								<tr class="tableHeader">
+									<th style="width:45%">
+										<span>domain</span>
+									</th>
+									<th style="width:10%">删除规则</th>
+								</tr>
+								<tr id="templateWhiteRow" class = "templateRow">
+									<td class = "domain">
+
+									</td>
 									<td>
-										表格4
+
 									</td>
 								</tr>
+								<button class="button" id="btnNewWhiteRule"> 
+									<span>New Rule</span>
+								</button>
 							</table>
 						</div>
-
-					</div>
-
+				</div>
 			</td>
 		</tr>
 	</table>

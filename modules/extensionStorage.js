@@ -8,7 +8,7 @@ storageGet = function(key){
     if(json == null){
         return undefined;
     }
-    try{
+    try{ 
         return JSON.parse(json);
     }catch(e){
         console.log("Parse JSON failed for" + key);
