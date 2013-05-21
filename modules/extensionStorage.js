@@ -65,39 +65,60 @@ optionsGetKey = function(key){
     return optionsList.key;
 }
 
-
+//key:"webreq","cookie","white"    num:要改变的第num个对象的  attribute：要改变的第num个对象的属性   value：改变后的值
 //Return Value:true,false
 changeListAttribute = function(key,num,attribute,value){
     var list = optionsGetList(key);
     list[num][attribute]=value;
-    storageSet(key,list);
+    switch(key){
+        case "webreq":
+        storageSet("webReqRuleList",list);
+            break;
+        case "cookie":
+        storageSet("cookieRuleList",list);
+            break;
+        case "white":
+        storageSet("domainWhiteList",list);
+            break;
+        }
     return true; 
 
 }
 
-//Return Value:true,false
-deleteList = function(key,num){
+//key:"webreq","cookie","white"      attributee:要查找的key的属性    value：要查找的attributee的值
+//Return Value:num,num[0]:匹配的个数,num[j]: key的第j个对象符合查找条件
+findListattribute = function(key,attributee,value){
     var list = optionsGetList(key);
-    if(num> list.length) return false;
-    list.splice(num,1);
-    storageSet(key,list);
-    return true;
-}
-
-
-//Return Value:num,num[0]:find number,num[j]:NO.J has value
-findListattribute = function(key,attribute,value){
-    var list = optionsGetList(key);
-    var num;
+    var num=[];
     var i=0;
     var j=0;
     var re =new RegExp(value);
-    for (var i = list.length - 1; i >= 0; i--) {
-        if(re.text(list[i][attribute]))
+    for ( i = list.length - 1; i >= 0; i--) {
+        if(re.test(list[i][attributee]))
           {
             num[j+1]=i;j++;
            } 
     }
     num[0]=j;
     return num;
+}
+//key:"webreq","cookie","white"    num:要删除第几个
+//Return Value:true,false
+deleteList = function(key,num){
+    var list = optionsGetList(key);
+    if(num> list.length) return false;
+    list.splice(num,1);
+    switch(key){
+        case "webreq":
+        storageSet("webReqRuleList",list);
+            break;
+        case "cookie":
+        storageSet("cookieRuleList",list);
+            break;
+        case "white":
+        storageSet("domainWhiteList",list);
+            break;
+        }
+    
+    return true;
 }
