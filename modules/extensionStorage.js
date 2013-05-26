@@ -65,6 +65,13 @@ optionsGetKey = function(key){
     return optionsList.key;
 }
 
+optionsSetKey = function(key,value){
+    var optionsList=storageGet("optionsStorage");
+    optionsList[key]=value;
+    storageSet("optionsStorage",optionsList);
+    return;
+}
+
 //key:"webreq","cookie","white"    num:要改变的第num个对象的  attribute：要改变的第num个对象的属性   value：改变后的值
 //Return Value:true,false
 changeListAttribute = function(key,num,attribute,value){
