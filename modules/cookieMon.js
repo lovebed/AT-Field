@@ -6,7 +6,7 @@ cookieOnChangeDealer = function cookieOnChangeDealer(changeInfo){
     instCook.domain=changeInfo.cookie.domain;
     instCook.key=changeInfo.cookie.name;
 
-    checkResult=ruleMan.testCookie(instCook);
+    checkResult=ruleMan.testCook(instCook);
     if(!checkResult){
         return;
     }else{
