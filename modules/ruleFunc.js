@@ -30,7 +30,7 @@ FifoCache.prototype = {
 ruleMan.cache = {
     webreq:FifoCache(50),
     cook:FifoCache(50),
-    white:FifoCache(20)
+    white:FifoCache(100)
 };
 
 ruleMan.rules = {};
@@ -95,12 +95,13 @@ ruleMan.regExpMatch = function regExpMatch(url,pattern){
 };
 
 ruleMan.testWebReq = function testWebReq(instWebReq){
+    //返回值表示是否应被拦截
     var cacheKey = instWebReq.url + " " + instWebReq.domain;
-    var result=false;
-    var cacheRes = ruleMan.cache.webreq.get(cacheKey);
-    if(cacheRes != undefined){
-        return cacheRes;
+    var result = ruleMan.cache.webreq.get(cacheKey);
+    if(result != undefined){
+        return result;
     };
+    result = false;
     var jsDomain = extractDomain(instWebReq.url);
     for(var i=0,l=ruleMan.rules.webreq.length;i<l;i++){
         if(ruleMan.regExpMatch(instWebReq.url,ruleMan.rules.webreq[i].pattern)){
@@ -123,21 +124,39 @@ ruleMan.testWebReq = function testWebReq(instWebReq){
 };
 
 ruleMan.testCook = function testCook(instCook){
-    
+    //返回值表示是否应被删除
+    var cacheKey = instCook.domain + " " + instCook.key;
+    var result = ruleMan.cache.cook.get(cacheKey);
+    if(result!=undefined){
+        return result;
+    };
+    result = false;
+    for(var i=0,l=ruleMan.rules.cook.length;i<l;i++){
+        if(ruleMan.regExpMatch(instCook.domain,ruleMan.rules.cook[i].domain)){
+            if(ruleMan.regExpMatch(instCook.key,ruleMan.rules.cook[i].keypat)){
+                result=true;
+            }else{
+                result=false;
+            };
+        };
+    };
+    ruleMan.cache.cook.set(cacheKey,resutl);
+    return result;
 };
 
 ruleMan.testWhite = function testWhite(url){
     var cacheKey = url;
-    var result = false;
-    if(ruleMan.cache.white[cacheKey] != undefined){
-        return ruleMan.cache.white[cacheKey]
+    var result = ruleMan.cache.white.get(cacheKey);
+    if(result != undefined){
+        return result;
     };
+    result = false;
     for(var i=0,l=ruleMan.rules.white.length;i<l;i++){
         if(regExpMatch(url,ruleMan.rules.white[i])){
             result=true;
             break;
         };
     };
-    ruleMan.cache.white[cacheKey]=result;
+    ruleMan.cache.white.set(cacheKey,result);
     return result;
 }
