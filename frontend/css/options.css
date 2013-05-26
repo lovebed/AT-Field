@@ -72,3 +72,8 @@ background: url("../../img/delete.png") center no-repeat;
 cursor: pointer;
 height: 100%;
 }
+#newWebReqRow .webAdd, #newCookieRow .cookieAdd, #newWhiteRow .whiteAdd {
+background: url("../../img/add.png") center no-repeat;
+cursor: pointer;
+height: 100%;
+}

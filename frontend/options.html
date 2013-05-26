@@ -4,12 +4,12 @@
 	<meta charset="utf-8">
 	<title>AntiField</title>
 	<script type="text/javascript" src= "js/jquery-1.9.1.js"></script>
-	<script type="text/javascript" src= "js/jquery-ui-1.10.2.custom.min.js"></script>
+	<script type="text/javascript" src= "js/jquery-ui-1.10.3.custom.min.js"></script>
 	<script type="text/javascript" src= "../modules/extensionStorage.js"></script>	
 	<script type="text/javascript" src= "../modules/testData.js"></script>
 
 	<script type="text/javascript" src= "js/options.js"></script>
-	<link rel=stylesheet type=text/css href=css/smoothness/jquery-ui-1.10.2.custom.min.css />
+	<link rel=stylesheet type=text/css href=css/smoothness/jquery-ui-1.10.3.custom.min.css />
 	<link rel=stylesheet type=text/css href=css/options.css />
 	<style type="text/css">
 	li.ui-state-default{}	
@@ -51,16 +51,13 @@
 						<div id="tab2">
 							<table id="webReqRulesTable" class="rulesTable">
 								<tr class="tableHeader">
-									<th style="width:45%">
+									<th>
 										<span>pattern</span>
 									</th>
-									<th style="width:16%">
+									<th>
 										<span>domain</span>
 									</th>
-									<th style="width:21%">
-										<span>flag</span>
-									</th>
-									<th style="width:10%">删除规则</th>
+									<th >删除规则</th>
 								</tr>
 								<tr id="templateWebReqRow" class = "templateRow">
 									<td class = "webseq">
@@ -71,29 +68,37 @@
 									<td class = "domain">
 
 									</td>
-									<td class = "flag">
-
-									</td>
-
 									<td>
 										<div class="webDelete" title="删除规则" onclick="webdeleteFn();">&nbsp</div>
 									</td>
 								</tr>
+								<tr id="newWebReqRow" class = "newRow">
+									<td class = "pattern">
+										<input id = "addPattern" name="pattern" type="text">									
+									</td>
+									<td class = "domain">
+										<input id = "addDomain"  name="domain" type="text">
+									</td>
+									<td>
+										<div class="webAdd" title="添加规则" onclick="newOneWebReqRule();">&nbsp</div>
+									</td>
+								</tr>
+
 							</table>
-							<button class="button" id="testBTN"> 
+							<button class="button" id="btnNewWebReqRule"> 
 									<span>New Rule</span>
 							</button>
 						</div>
 						<div id="tab3">
 							<table id="cookieRulesTable" class="rulesTable">
 								<tr class="tableHeader">
-									<th style="width:45%">
+									<th>
 										<span>domain</span>
 									</th>
-									<th style="width:16%">
+									<th>
 										<span>keypat</span>
 									</th>
-									<th style="width:10%">删除规则</th>
+									<th>删除规则</th>
 								</tr>
 								<tr id="templateCookieRow" class = "templateRow">
 									<td class = "cookieseq">
@@ -105,18 +110,32 @@
 									<td class = "keypat">
 									</td>
 									<td>
-										<div class="cookieDelete" title="删除规则">&nbsp</div>
+										<div class="cookieDelete" title="删除规则"  onclick="cookiedeleteFn();">&nbsp</div>
+									</td>
+								</tr>
+								<tr id="newCookieRow" class = "newRow">
+									<td class = "domain">
+										<input id = "addDomain" name="domain" type="text">									
+									</td>
+									<td class = "keypat">
+										<input id = "addKeypat"  name="keypat" type="text">
+									</td>
+									<td>
+										<div class="cookieAdd" title="添加规则" onclick="newOneCookieRule();">&nbsp</div>
 									</td>
 								</tr>
 							</table>
+							<button class="button" id="btnNewCookieRule"> 
+									<span>New Rule</span>
+							</button>
 						</div>
 						<div id="tab4">
 							<table id="whiteRulesTable" class="rulesTable">
 								<tr class="tableHeader">
-									<th style="width:45%">
+									<th>
 										<span>domain</span>
 									</th>
-									<th style="width:10%">删除规则</th>
+									<th>删除规则</th>
 								</tr>
 								<tr id="templateWhiteRow" class = "templateRow">
 									<td class = "whiteseq">
@@ -124,13 +143,22 @@
 									<td class = "domain">
 									</td>
 									<td>
-										<div class="whiteDelete" title="删除规则">&nbsp</div>
+										<div class="whiteDelete" title="删除规则"  onclick="whitedeleteFn();">&nbsp</div>
 									</td>
 								</tr>
-								<button class="button" id="btnNewWhiteRule"> 
+								<tr id="newWhiteRow" class = "newRow">
+									<td class = "domain">
+										<input id = "addDomain" name="domain" type="text">									
+									</td>
+									<td>
+										<div class="whiteAdd" title="添加规则" onclick="newOneWhiteRule();">&nbsp</div>
+									</td>
+								</tr>
+
+							</table>								
+							<button class="button" id="btnNewWhiteRule"> 
 									<span>New Rule</span>
-								</button>
-							</table>
+							</button>
 						</div>
 				</div>
 			</td>

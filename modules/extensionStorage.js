@@ -85,10 +85,6 @@ cookieRule1 = function(attribute,value){
         this[attribute[1]] = value[1];
 
     }
-white1 = function(attribute,value){
-        this[attribute[0]] = value[0];
-               
-    }
 
 addListMember = function(key,attribute,value,num)
 {
@@ -105,7 +101,7 @@ addListMember = function(key,attribute,value,num)
         storageSet("cookieRuleList",list);
             break;
         case "white":
-        list[leng]= new white1(attribute,value);
+        list[leng] = value;
         storageSet("domainWhiteList",list);
             break;
         }   
