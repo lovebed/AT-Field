@@ -58,11 +58,21 @@ optionsGetList = function(key){
 //Return Value: value if the options key exists.
 optionsGetKey = function(key){
     var optionsList=storageGet("optionsStorage");
-    if(optionsList[key] == undefined){
+    if(optionsList === undefined || optionsList[key] === undefined){
         console.log("Invalid optionsGetKey Call: " + key);
         return undefined;
     }
     return optionsList.key;
+}
+
+optionsSetKey = function(key,value){
+    var optionsList=storageGet("optionsStorage");
+    if(optionsList===undefined){
+        optionsList = {};
+    }
+    optionsList[key]=value;
+    storageSet("optionsStorage",optionsList);
+    return;
 }
 
 //key:"webreq","cookie","white"    num:要改变的第num个对象的  attribute：要改变的第num个对象的属性   value：改变后的值

@@ -1,9 +1,36 @@
 var ruleMan = {};
 
+function FifoCache(size) {
+  this._size = Math.max(size, 0);
+  this._cacheKeys = [];
+  this._cache = {};
+}
+FifoCache.prototype = {
+  // Add an entry to the cache, evicting the (size)th-oldest entry if the cache
+  // is full.
+  set: function(key, value) {
+    var alreadyCached = (key in this._cache);
+    this._cache[key] = value;
+
+    if (!alreadyCached) {
+      this._cacheKeys.push(key); // add to the end
+      if (this._cacheKeys.length > this._size) {
+        delete this._cache[this._cacheKeys[0]];
+        this._cacheKeys.shift(); // remove from the beginning
+      }
+    }
+  },
+
+  // Return an entry from the cache, or undefined if key is not in the cache.
+  get: function(key) {
+    return this._cache[key];
+  }
+};
+
 ruleMan.cache = {
-    webreq:{},
-    cook:{},
-    white:{}
+    webreq:new FifoCache(50),
+    cook:new FifoCache(50),
+    white:new FifoCache(50)
 };
 
 ruleMan.rules = {};
@@ -68,11 +95,13 @@ ruleMan.regExpMatch = function regExpMatch(url,pattern){
 };
 
 ruleMan.testWebReq = function testWebReq(instWebReq){
+    //返回值表示是否应被拦截
     var cacheKey = instWebReq.url + " " + instWebReq.domain;
-    var result=false;
-    if(ruleMan.cache.webreq[cacheKey] != undefined){
-        return ruleMan.cache.webreq[cacheKey]
+    var result = ruleMan.cache.webreq.get(cacheKey);
+    if(result != undefined){
+        return result;
     };
+    result = false;
     var jsDomain = extractDomain(instWebReq.url);
     for(var i=0,l=ruleMan.rules.webreq.length;i<l;i++){
         if(ruleMan.regExpMatch(instWebReq.url,ruleMan.rules.webreq[i].pattern)){
@@ -90,26 +119,44 @@ ruleMan.testWebReq = function testWebReq(instWebReq){
             };
         };
     };
-    ruleMan.cache.webreq[cacheKey]=result;
+    ruleMan.cache.webreq.set(cacheKey,result);
     return result;
 };
 
 ruleMan.testCook = function testCook(instCook){
-    
+    //返回值表示是否应被删除
+    var cacheKey = instCook.domain + " " + instCook.key;
+    var result = ruleMan.cache.cook.get(cacheKey);
+    if(result!=undefined){
+        return result;
+    };
+    result = false;
+    for(var i=0,l=ruleMan.rules.cook.length;i<l;i++){
+        if(ruleMan.regExpMatch(instCook.domain,ruleMan.rules.cook[i].domain)){
+            if(ruleMan.regExpMatch(instCook.key,ruleMan.rules.cook[i].keypat)){
+                result=true;
+            }else{
+                result=false;
+            };
+        };
+    };
+    ruleMan.cache.cook.set(cacheKey,result);
+    return result;
 };
 
 ruleMan.testWhite = function testWhite(url){
     var cacheKey = url;
-    var result = false;
-    if(ruleMan.cache.white[cacheKey] != undefined){
-        return ruleMan.cache.white[cacheKey]
+    var result = ruleMan.cache.white.get(cacheKey);
+    if(result != undefined){
+        return result;
     };
+    result = false;
     for(var i=0,l=ruleMan.rules.white.length;i<l;i++){
         if(regExpMatch(url,ruleMan.rules.white[i])){
             result=true;
             break;
         };
     };
-    ruleMan.cache.white[cacheKey]=result;
+    ruleMan.cache.white.set(cacheKey,result);
     return result;
 }
