@@ -28,9 +28,9 @@ FifoCache.prototype = {
 };
 
 ruleMan.cache = {
-    webreq:FifoCache(50),
-    cook:FifoCache(50),
-    white:FifoCache(100)
+    webreq:new FifoCache(50),
+    cook:new FifoCache(50),
+    white:new FifoCache(50)
 };
 
 ruleMan.rules = {};
@@ -140,7 +140,7 @@ ruleMan.testCook = function testCook(instCook){
             };
         };
     };
-    ruleMan.cache.cook.set(cacheKey,resutl);
+    ruleMan.cache.cook.set(cacheKey,result);
     return result;
 };
 
