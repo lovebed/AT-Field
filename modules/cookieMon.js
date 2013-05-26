@@ -11,7 +11,7 @@ cookieOnChangeDealer = function cookieOnChangeDealer(changeInfo){
         return;
     }else{
         var removeDetail={};
-        removeDetail.url=changeInfo.cookie.domain;
+        removeDetail.url="http" + (changeInfo.cookie.secure ? "s" : "") + "://" + changeInfo.cookie.domain + changeInfo.cookie.path;
         removeDetail.name=changeInfo.cookie.name;
         chrome.cookies.remove(removeDetail);
         return;
