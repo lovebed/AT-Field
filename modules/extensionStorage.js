@@ -75,6 +75,43 @@ optionsSetKey = function(key,value){
     return;
 }
 
+webReqRule1 = function(attribute,value){
+        this[attribute[0]] = value[0];
+        this[attribute[1]] = value[1];
+    }
+
+cookieRule1 = function(attribute,value){
+        this[attribute[0]] = value[0];
+        this[attribute[1]] = value[1];
+
+    }
+white1 = function(attribute,value){
+        this[attribute[0]] = value[0];
+               
+    }
+
+addListMember = function(key,attribute,value,num)
+{
+   var list = optionsGetList(key);
+    var leng=list.length;
+    
+    switch(key){
+        case "webreq":
+        list[leng]=new webReqRule1(attribute,value);
+        storageSet("webReqRuleList",list);
+            break;
+        case "cookie":
+        list[leng]= new cookieRule1(attribute,value);
+        storageSet("cookieRuleList",list);
+            break;
+        case "white":
+        list[leng]= new white1(attribute,value);
+        storageSet("domainWhiteList",list);
+            break;
+        }   
+        return true;
+}
+
 //key:"webreq","cookie","white"    num:要改变的第num个对象的  attribute：要改变的第num个对象的属性   value：改变后的值
 //Return Value:true,false
 changeListAttribute = function(key,num,attribute,value){
