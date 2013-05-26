@@ -1,9 +1,36 @@
 var ruleMan = {};
 
+function FifoCache(size) {
+  this._size = Math.max(size, 0);
+  this._cacheKeys = [];
+  this._cache = {};
+}
+FifoCache.prototype = {
+  // Add an entry to the cache, evicting the (size)th-oldest entry if the cache
+  // is full.
+  set: function(key, value) {
+    var alreadyCached = (key in this._cache);
+    this._cache[key] = value;
+
+    if (!alreadyCached) {
+      this._cacheKeys.push(key); // add to the end
+      if (this._cacheKeys.length > this._size) {
+        delete this._cache[this._cacheKeys[0]];
+        this._cacheKeys.shift(); // remove from the beginning
+      }
+    }
+  },
+
+  // Return an entry from the cache, or undefined if key is not in the cache.
+  get: function(key) {
+    return this._cache[key];
+  }
+};
+
 ruleMan.cache = {
-    webreq:{},
-    cook:{},
-    white:{}
+    webreq:FifoCache(50),
+    cook:FifoCache(50),
+    white:FifoCache(20)
 };
 
 ruleMan.rules = {};
@@ -70,8 +97,9 @@ ruleMan.regExpMatch = function regExpMatch(url,pattern){
 ruleMan.testWebReq = function testWebReq(instWebReq){
     var cacheKey = instWebReq.url + " " + instWebReq.domain;
     var result=false;
-    if(ruleMan.cache.webreq[cacheKey] != undefined){
-        return ruleMan.cache.webreq[cacheKey]
+    var cacheRes = ruleMan.cache.webreq.get(cacheKey);
+    if(cacheRes != undefined){
+        return cacheRes;
     };
     var jsDomain = extractDomain(instWebReq.url);
     for(var i=0,l=ruleMan.rules.webreq.length;i<l;i++){
@@ -90,7 +118,7 @@ ruleMan.testWebReq = function testWebReq(instWebReq){
             };
         };
     };
-    ruleMan.cache.webreq[cacheKey]=result;
+    ruleMan.cache.webreq.set(cacheKey,result);
     return result;
 };
 
