@@ -9,11 +9,22 @@ function init()
 	showAllCookieRule();
 	showAllWhiteRule()
 }
+function webdeleteFn()
+{
+	var row = event.target.parentNode.parentNode;
+	var childrow = event.target.parentNode.parentNode.firstChild;
+	var num = $(childrow).text();
+	deleteList("webreq",num);
+	$(row).remove();
+
+	showAllWebReqRule();
+
+}
 function showAllWebReqRule()
 {
 	var list = optionsGetList("webreq");
 	var len = list.length;
-	for (var i = 0; i < 10; i++) 
+	for (var i = 0; i < len; i++) 
 	{
 		addOneWebReqRule(list,i);		
 	}
@@ -25,6 +36,11 @@ function addOneWebReqRule(j,k)
 		row.removeClass("templateRow").addClass("webReqRow");	
 		table.append(row);		
 		var list = j;
+
+		var show = k;
+		var webRul = $(".webReqRow .webseq");
+		webRul.removeClass("webseq").addClass("newwebseq");		
+		webRul.text(show);		
 
 		var show = list[k]["pattern"];
 		var webRul = $(".webReqRow .pattern");
@@ -45,7 +61,7 @@ function showAllCookieRule()
 {
 		var list = optionsGetList("cookie");
 		var len = list.length;
-		for (var i = 0; i < 10; i++) 
+		for (var i = 0; i < len; i++) 
 		{
 			addOneCookieRule(list,i);		
 		}
@@ -57,6 +73,11 @@ function addOneCookieRule(j,k)
 		row.removeClass("templateRow").addClass("cookieRow");	
 		table.append(row);		
 		var list = j;
+
+		var show = k;
+		var webRul = $(".cookieRow .cookieseq");
+		webRul.removeClass("cookieseq").addClass("newcookieseq");		
+		webRul.text(show);
 
 		var show = list[k]["domain"];
 		var webRul = $(".cookieRow .domain");
@@ -72,7 +93,7 @@ function showAllWhiteRule()
 {
 		var list = optionsGetList("white");
 		var len = list.length;
-		for (var i = 0; i < 10; i++) 
+		for (var i = 0; i < len; i++) 
 		{
 			addOneWhiteRule(list,i);		
 		}	
@@ -86,6 +107,11 @@ function addOneWhiteRule(j,k)
 		row.removeClass("templateRow").addClass("whiteRow");	
 		table.append(row);		
 		var list = j;
+
+		var show = k;
+		var webRul = $(".whiteRow .whiteseq");
+		webRul.removeClass("whiteseq").addClass("newwhiteseq");		
+		webRul.text(show);
 
 		var show = list[k];
 		var webRul = $(".whiteRow .domain");

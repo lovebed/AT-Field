@@ -58,3 +58,17 @@ border-color: blue;
 .templateRow {
 display: none;
 }
+.newwebseq {
+display: none;
+}
+.newcookieseq {
+display: none;
+}
+.newwhiteseq {
+display: none;
+}
+.webReqRow .webDelete, .cookieRow .cookieDelete, .whiteRow .whiteDelete {
+background: url("../../img/delete.png") center no-repeat;
+cursor: pointer;
+height: 100%;
+}

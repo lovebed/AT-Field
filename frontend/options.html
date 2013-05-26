@@ -47,62 +47,6 @@
 							</li>
 						</ul>
 						<div id="tab1">
-							<table id="rulesTable" class="rulesTable">
-								<tr class="tableHeader">
-									<th style="width:18%">Name</th>
-									<th style="width:45%">
-										<span>pattern</span>
-									</th>
-									<th style="width:16%">
-										<span>domain</span>
-									</th>
-									<th style="width:21%">
-										<span>flag</span>
-									</th>
-									<th style="width:28px">删除规则</th>
-								</tr>
-
-								<tr class="templateRow">
-									<td class = "webRuleName">
-									
-									</td>
-									<td class = "webRulePattern">
-
-									</td>
-									<td>
-										<div>
-											lds
-										</div>
-									</td>
-									<td>
-									</td>
-									<td>
-
-									</td>
-								</tr>
-								<tr class="defaultRow">
-									<td>
-										<div>
-											<span class="ruleName" data-i18n-content="options_defaultRule">Default Rule</span>
-											<span data-help="defaultRule"/>
-										</div>
-									</td>
-									<td colspan="2">
-										<div>
-											<span class="urlPattern" data-i18n-content="options_defaultRuleUrlPattern">All URLs that doesn't match any other pattern</span>
-										</div>
-									</td>
-									<td>
-										<div>
-											<select id="cmbDefaultRuleProfile" name="profileId"></select>
-										</div>
-									</td>
-								</tr>
-								<button class="button" id="btnNewRule"> 
-									<span>New Rule</span>
-								</button>
-						</table>
-
 						</div>
 						<div id="tab2">
 							<table id="webReqRulesTable" class="rulesTable">
@@ -119,6 +63,8 @@
 									<th style="width:10%">删除规则</th>
 								</tr>
 								<tr id="templateWebReqRow" class = "templateRow">
+									<td class = "webseq">
+									</td>
 									<td class = "pattern">
 									
 									</td>
@@ -128,10 +74,9 @@
 									<td class = "flag">
 
 									</td>
-									<td>
-									</td>
-									<td>
 
+									<td>
+										<div class="webDelete" title="删除规则" onclick="webdeleteFn();">&nbsp</div>
 									</td>
 								</tr>
 							</table>
@@ -151,6 +96,8 @@
 									<th style="width:10%">删除规则</th>
 								</tr>
 								<tr id="templateCookieRow" class = "templateRow">
+									<td class = "cookieseq">
+									</td>
 									<td class = "domain">
 
 									</td>
@@ -158,7 +105,7 @@
 									<td class = "keypat">
 									</td>
 									<td>
-
+										<div class="cookieDelete" title="删除规则">&nbsp</div>
 									</td>
 								</tr>
 							</table>
@@ -172,11 +119,12 @@
 									<th style="width:10%">删除规则</th>
 								</tr>
 								<tr id="templateWhiteRow" class = "templateRow">
+									<td class = "whiteseq">
+									</td>
 									<td class = "domain">
-
 									</td>
 									<td>
-
+										<div class="whiteDelete" title="删除规则">&nbsp</div>
 									</td>
 								</tr>
 								<button class="button" id="btnNewWhiteRule"> 
