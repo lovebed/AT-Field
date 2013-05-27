@@ -62,7 +62,7 @@ optionsGetKey = function(key){
         console.log("Invalid optionsGetKey Call: " + key);
         return undefined;
     }
-    return optionsList.key;
+    return optionsList[key];
 }
 
 optionsSetKey = function(key,value){
