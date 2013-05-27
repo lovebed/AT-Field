@@ -3,57 +3,95 @@ var o = {
 }
 function init()
 {
-	$('#btnNewWebReqRule').click(function () {showAllWebReqRule(); });
-	$('#btnNewCookieRule').click(function () {showAllCookieRule(); });
-	$('#btnNewWhiteRule').click(function () {showAllWhiteRule(); });
+	$('#btnRefreshWebReqRule').click(function () {refreshWebReqRule(); });
+	$('#btnRefreshCookieRule').click(function () {refreshCookieRule(); });
+	$('#btnRefreshWhiteRule').click(function () {refreshWhiteRule(); });
+	
+
+	$(".webAdd").click(function () {newOneWebReqRule(); });	
+	$(".cookieAdd").click(function () {newOneCookieRule(); });
+	$(".whiteAdd").click(function () {newOneWhiteRule(); });
 	showAllWebReqRule();
 	showAllCookieRule();
-	showAllWhiteRule()
+	showAllWhiteRule();
+	$(".webDelete").click(function () {webdeleteFn();});
+	$(".cookieDelete").click(function () {cookiedeleteFn();});
+	$(".whiteDelete").click(function () {whitedeleteFn();});
 }
+function refreshWebReqRule(){
+	removeAllWebReq();
+	showAllWebReqRule();
+	$(".webDelete").click(function () {webdeleteFn();});
+}
+function refreshCookieRule(){
+	removeAllCookie();
+	showAllCookieRule();
+	$(".cookieDelete").click(function () {cookiedeleteFn();});
+}
+function refreshWhiteRule(){
+	removeAllWhite();
+	showAllWhiteRule();
+	$(".whiteDelete").click(function () {whitedeleteFn();});
+}
+
 function webdeleteFn(){
 	var row = event.target.parentNode.parentNode;
 	var childrow = event.target.parentNode.parentNode.childNodes[1];
 	var num = $(childrow).text();
 	deleteList("webreq",num);
-	$(row).remove();
+	removeAllWebReq();
+	showAllWebReqRule();
+	$(".webDelete").click(function () {webdeleteFn();});
 }
 function cookiedeleteFn(){
 	var row = event.target.parentNode.parentNode;
 	var childrow = event.target.parentNode.parentNode.childNodes[1];
 	var num = $(childrow).text();
 	deleteList("cookie",num);
-	$(row).remove();
+	removeAllCookie();
+	showAllCookieRule();
+	$(".cookieDelete").click(function () {cookiedeleteFn();});
 }
 function whitedeleteFn(){
 	var row = event.target.parentNode.parentNode;
 	var childrow = event.target.parentNode.parentNode.childNodes[1];
 	var num = $(childrow).text();
 	deleteList("white",num);
-	$(row).remove();
+	removeAllWhite();
+	showAllWhiteRule();
+	$(".whiteDelete").click(function () {whitedeleteFn();});
+}
+function removeAllWebReq(){
+	$('.webReqRow').remove();
+}
+function removeAllCookie(){
+	$('.cookieRow').remove();
+}
+function removeAllWhite(){
+	$('.whiteRow').remove();
 }
 function newOneWebReqRule(){
 	var pattern1 = $("#newWebReqRow #addPattern").val();
 	var domian1 = $("#newWebReqRow #addDomain").val();
 	addListMember("webreq",["pattern","domain"],[pattern1,domian1]);
-	var list = optionsGetList("webreq");
-	var len = list.length-1;
-	addOneWebReqRule(list,len);
+	removeAllWebReq();
+	showAllWebReqRule();
+	$(".webDelete").click(function () {webdeleteFn();});
 }
 function newOneCookieRule(){
 	var domain1 = $("#newCookieRow #addDomain").val();
 	var keypat1 = $("#newCookieRow #addKeypat").val();
 	addListMember("cookie",["domain","keypat"],[domain1,keypat1]);
-	var list = optionsGetList("cookie");
-	var len = list.length-1;
-	addOneCookieRule(list,len);
-
+	removeAllCookie();
+	showAllCookieRule();
+	$(".cookieDelete").click(function () {cookiedeleteFn();});
 }
 function newOneWhiteRule(){
 	var domain1 = $("#newWhiteRow #addDomain").val();
 	addListMember("white","",domain1);
-	var list = optionsGetList("white");
-	var len = list.length-1;
-	addOneWhiteRule(list,len);
+	removeAllWhite();
+	showAllWhiteRule();
+	$(".whiteDelete").click(function () {whitedeleteFn();});
 }
 function showAllWebReqRule(){
 	var list = optionsGetList("webreq");

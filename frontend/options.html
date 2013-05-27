@@ -69,7 +69,7 @@
 
 									</td>
 									<td>
-										<div class="webDelete" title="删除规则" onclick="webdeleteFn();">&nbsp</div>
+										<div id="lds" class="webDelete" title="删除规则">&nbsp</div>
 									</td>
 								</tr>
 								<tr id="newWebReqRow" class = "newRow">
@@ -80,13 +80,13 @@
 										<input id = "addDomain"  name="domain" type="text">
 									</td>
 									<td>
-										<div class="webAdd" title="添加规则" onclick="newOneWebReqRule();">&nbsp</div>
+										<div class="webAdd" title="添加规则">&nbsp</div>
 									</td>
 								</tr>
 
 							</table>
-							<button class="button" id="btnNewWebReqRule"> 
-									<span>New Rule</span>
+							<button class="button" id="btnRefreshWebReqRule"> 
+									<span>Refresh</span>
 							</button>
 						</div>
 						<div id="tab3">
@@ -110,7 +110,7 @@
 									<td class = "keypat">
 									</td>
 									<td>
-										<div class="cookieDelete" title="删除规则"  onclick="cookiedeleteFn();">&nbsp</div>
+										<div class="cookieDelete" title="删除规则">&nbsp</div>
 									</td>
 								</tr>
 								<tr id="newCookieRow" class = "newRow">
@@ -121,12 +121,12 @@
 										<input id = "addKeypat"  name="keypat" type="text">
 									</td>
 									<td>
-										<div class="cookieAdd" title="添加规则" onclick="newOneCookieRule();">&nbsp</div>
+										<div class="cookieAdd" title="添加规则">&nbsp</div>
 									</td>
 								</tr>
 							</table>
-							<button class="button" id="btnNewCookieRule"> 
-									<span>New Rule</span>
+							<button class="button" id="btnRefreshCookieRule"> 
+									<span>Refresh</span>
 							</button>
 						</div>
 						<div id="tab4">
@@ -143,7 +143,7 @@
 									<td class = "domain">
 									</td>
 									<td>
-										<div class="whiteDelete" title="删除规则"  onclick="whitedeleteFn();">&nbsp</div>
+										<div class="whiteDelete" title="删除规则">&nbsp</div>
 									</td>
 								</tr>
 								<tr id="newWhiteRow" class = "newRow">
@@ -151,13 +151,13 @@
 										<input id = "addDomain" name="domain" type="text">									
 									</td>
 									<td>
-										<div class="whiteAdd" title="添加规则" onclick="newOneWhiteRule();">&nbsp</div>
+										<div class="whiteAdd" title="添加规则">&nbsp</div>
 									</td>
 								</tr>
 
 							</table>								
-							<button class="button" id="btnNewWhiteRule"> 
-									<span>New Rule</span>
+							<button class="button" id="btnRefreshWhiteRule"> 
+									<span>Refresh</span>
 							</button>
 						</div>
 				</div>
