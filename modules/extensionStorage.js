@@ -85,7 +85,6 @@ cookieRule1 = function(attribute,value){
         this[attribute[1]] = value[1];
 
     }
-
 addListMember = function(key,attribute,value,num)
 {
    var list = optionsGetList(key);
