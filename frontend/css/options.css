@@ -1,11 +1,12 @@
 body
 {
-background-color:#FFFFFF;
+background-color:#fafbff;
 margin:0 auto;
 padding:0px;
 }
 
 #header {
+
 
 	font-size: 18pt;
 	text-shadow: #ccc 1px 1px 3px;
@@ -21,8 +22,8 @@ padding:0px;
 }
 h1
 {
- font-family:"Times New Roman", Times, serif;
- test-align:center;
+ font-family:Verdana, Arial, Helvetica, sans-serif;
+
  top:20px;
  
 }
@@ -43,6 +44,9 @@ vertical-align: inherit;
 border-color: inherit;
 }
 .rulesTable th {
+background-color:#999999;
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0,#e5ecf9), color-stop(1, #C0D9D9));
+background: -webkit-gradient(linear, left top, left bottom, olor-stop(0, #fff), color-stop(0.48, hsl(217, 73%, 97%)), color-stop(0.51, hsl(217, 62%, 95%)));
 border-left: solid 1px #e2e7e9;
 border-bottom: solid 1px #d7dbe0;
 font-weight: bold;
@@ -54,6 +58,9 @@ table {
 border-collapse: separate;
 border-spacing: 2px;
 border-color: blue;
+}
+#tab1,#tab2,#tab3,#tab4{
+background-color:#f8fafc;
 }
 .templateRow {
 display: none;
