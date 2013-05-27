@@ -44,6 +44,7 @@ vertical-align: inherit;
 border-color: inherit;
 }
 .rulesTable th {
+height:30px;
 background-color:#999999;
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0,#e5ecf9), color-stop(1, #C0D9D9));
 background: -webkit-gradient(linear, left top, left bottom, olor-stop(0, #fff), color-stop(0.48, hsl(217, 73%, 97%)), color-stop(0.51, hsl(217, 62%, 95%)));
@@ -53,6 +54,11 @@ font-weight: bold;
 color: #6e809d;
 white-space: nowrap;
 overflow: hidden;
+}
+.rulesTable td{
+background-color:#fff;
+height:25px;
+
 }
 table {
 border-collapse: separate;
