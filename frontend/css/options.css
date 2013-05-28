@@ -23,6 +23,7 @@ padding:0px;
 h1
 {
  font-family:Verdana, Arial, Helvetica, sans-serif;
+ font-size:40px;
 
  top:20px;
  
@@ -54,6 +55,7 @@ font-weight: bold;
 color: #6e809d;
 white-space: nowrap;
 overflow: hidden;
+font-size:18px;
 }
 .rulesTable td{
 background-color:#fff;
