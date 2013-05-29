@@ -28,9 +28,9 @@ FifoCache.prototype = {
 };
 
 ruleMan.cache = {
-    webreq:new FifoCache(50),
-    cook:new FifoCache(50),
-    white:new FifoCache(50)
+    webreq:new FifoCache(100),
+    cook:new FifoCache(100),
+    white:new FifoCache(100)
 };
 
 ruleMan.rules = {};
@@ -53,6 +53,16 @@ extractDomain = function extractDomain(url){
 ruleMan.init = function init(){
     ruleMan.loadRules();
 };
+
+ruleMan.refresh = function refresh(){
+    ruleMan.loadRules();
+    ruleMan.cache=undefined;
+    ruleMan.cache = {
+        webreq:new FifoCache(100),
+        cook:new FifoCache(100),
+        white:new FifoCache(100)
+    };
+}
 
 ruleMan.loadRules = function loadRules(){
     var rules={
