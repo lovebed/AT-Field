@@ -18,6 +18,11 @@ function init()
 	$(".cookieDelete").click(function () {cookiedeleteFn();});
 	$(".whiteDelete").click(function () {whitedeleteFn();});
 }
+function refreshBGrules(){
+	//刷新后台页面规则
+	BG=chrome.extension.getBackgroundPage();
+	BG.ruleMan.refresh();
+}
 function refreshWebReqRule(){
 	removeAllWebReq();
 	showAllWebReqRule();
@@ -42,6 +47,7 @@ function webdeleteFn(){
 	removeAllWebReq();
 	showAllWebReqRule();
 	$(".webDelete").click(function () {webdeleteFn();});
+	refreshBGrules();
 }
 function cookiedeleteFn(){
 	var row = event.target.parentNode.parentNode;
@@ -51,6 +57,7 @@ function cookiedeleteFn(){
 	removeAllCookie();
 	showAllCookieRule();
 	$(".cookieDelete").click(function () {cookiedeleteFn();});
+	refreshBGrules();
 }
 function whitedeleteFn(){
 	var row = event.target.parentNode.parentNode;
@@ -60,6 +67,7 @@ function whitedeleteFn(){
 	removeAllWhite();
 	showAllWhiteRule();
 	$(".whiteDelete").click(function () {whitedeleteFn();});
+	refreshBGrules();
 }
 function removeAllWebReq(){
 	$('.webReqRow').remove();
@@ -77,6 +85,7 @@ function newOneWebReqRule(){
 	removeAllWebReq();
 	showAllWebReqRule();
 	$(".webDelete").click(function () {webdeleteFn();});
+	refreshBGrules();
 }
 function newOneCookieRule(){
 	var domain1 = $("#newCookieRow #addDomain").val();
@@ -85,6 +94,7 @@ function newOneCookieRule(){
 	removeAllCookie();
 	showAllCookieRule();
 	$(".cookieDelete").click(function () {cookiedeleteFn();});
+	refreshBGrules();
 }
 function newOneWhiteRule(){
 	var domain1 = $("#newWhiteRow #addDomain").val();
@@ -92,6 +102,7 @@ function newOneWhiteRule(){
 	removeAllWhite();
 	showAllWhiteRule();
 	$(".whiteDelete").click(function () {whitedeleteFn();});
+	refreshBGrules();
 }
 function showAllWebReqRule(){
 	var list = optionsGetList("webreq");
