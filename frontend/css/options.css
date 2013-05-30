@@ -3,6 +3,7 @@ body
 background-color:#fafbff;
 margin:0 auto;
 padding:0px;
+font-size:9pt;
 }
 
 #header {
@@ -69,6 +70,7 @@ border-color: blue;
 }
 #tab1,#tab2,#tab3,#tab4{
 background-color:#f8fafc;
+
 }
 .templateRow {
 display: none;
