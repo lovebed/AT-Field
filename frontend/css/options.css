@@ -92,3 +92,28 @@ background: url("../../img/add.png") center no-repeat;
 cursor: pointer;
 height: 100%;
 }
+.button{
+   width: 100px;
+	min-width: 100px;
+	color: #567;
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	padding: 6px;
+	border: solid 1px #abc;
+	border-radius: 2px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f0f5fc), color-stop(1, #e0e9f4));
+	background: -webkit-gradient(linear, left top, left bottom, 
+		color-stop(0, #fff), color-stop(0.4, hsl(0, 0%, 96%)), color-stop(0.41, hsl(0, 0%, 92%)));
+		
+	-webkit-box-shadow: 0px 1px 2px #ddd;
+	}
+.button:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f6fafe), color-stop(1, #e3ebf7));
+	background: -webkit-gradient(linear, left top, left bottom, 
+		color-stop(0, #fff),  color-stop(0.4, hsl(215, 67%, 96%)), color-stop(0.41, hsl(213, 48%, 92%)));
+}
+
+.button:active {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #e0e9f4), color-stop(1, #f5f9f4));
+}
