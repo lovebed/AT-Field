@@ -16,7 +16,7 @@
 	
 </head>
 <body>
-	<table align="center" width="70%">
+	<table align="center" width="70%" class="maintable">
 	    <tr id="header">
 			<td height="80">
 				<div>
@@ -29,8 +29,8 @@
 	<table align="center" width="70%" id="mainer">		
 		<tr>
 			<td>
-				<div id="tabs">
-						<ul>
+				<div id="tabs">						
+				<ul style="width:620px ;background-color:#f8fafc">
 						    <li>
 								<a href="#tab1"><img src="home.png" style="width:16px;vertical-align:bottom;height:16px;" alt="home" />Home</a>
 							</li>
@@ -50,7 +50,7 @@
 						<div id="tab1">
 						</div>
 						<div id="tab2">
-							<table id="webReqRulesTable" class="rulesTable" style="width>
+							<table align="center" id="webReqRulesTable" class="rulesTable" style="width>
 								<tr class="tableHeader">
 									<th style="width:395px" >
 										<span>pattern</span>
@@ -88,17 +88,17 @@
 							</table>
 							<button class="button" id="btnRefreshWebReqRule"> 
 							
-									<img src="refresh.png" style="width:16px;vertical-align:bottom;height:16px;" alt="refresh" />
+									<img src="ref.png" style="width:16px;vertical-align:bottom;height:16px;" alt="refresh" />
 									<span>Refresh</span>
 							</button>
 						</div>
 						<div id="tab3">
-							<table id="cookieRulesTable" class="rulesTable">
+							<table id="cookieRulesTable" class="rulesTable" align="center">
 								<tr class="tableHeader">
-									<th style="width:500px" >
+									<th style="width:600px" >
 										<span>domain</span>
 									</th>
-									<th style="width:100px">
+									<th style="width:135px">
 										<span>keypat</span>
 									</th>
 									<th style="width:110px">
@@ -131,17 +131,17 @@
 							</table>
 							<button class="button" id="btnRefreshCookieRule"> 
 							
-	                                <img src="refresh.png" style="width:16px;vertical-align:bottom;height:16px;" alt="refresh" />
+	                                <img src="ref.png" style="width:16px;vertical-align:bottom;height:16px;" alt="refresh" />
 									<span>Refresh</span>
 							</button>
 						</div>
 						<div id="tab4">
-							<table id="whiteRulesTable" class="rulesTable">
+							<table id="whiteRulesTable" class="rulesTable" align="center">
 								<tr class="tableHeader">
 									<th style="width:644px">
 										<span>domain</span>
 									</th>
-									<th style="width:142px">删除规则</th>
+									<th style="width:201px">删除规则</th>
 								</tr>
 								<tr id="templateWhiteRow" class = "templateRow">
 									<td class = "whiteseq">
@@ -163,7 +163,7 @@
 
 							</table>								
 							<button class="button" id="btnRefreshWhiteRule"> 
-							<img src="refresh.png" style="width:16px;vertical-align:bottom;height:16px;" alt="refresh" />
+							<img src="ref.png" style="width:16px;vertical-align:bottom;height:16px;" alt="refresh" />
 									<span>Refresh</span>
 							</button>
 						</div>

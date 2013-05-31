@@ -11,20 +11,27 @@ font-size:9pt;
 
 	font-size: 18pt;
 	text-shadow: #ccc 1px 1px 3px;
-	border: solid 1px #abc;
+	
 	border-radius: 6px;
 	padding: 3px;
 	margin-bottom: 10px;
-	background-color:#00CCFF;
+	background-color: #eaeeff;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f4f9ff), color-stop(1, #e5ecf9));
-	background: -webkit-gradient(linear, left top, left bottom, olor-stop(0, #fff), color-stop(0.48, hsl(217, 73%, 97%)), color-stop(0.51, hsl(217, 62%, 95%)));
+	background: -webkit-gradient(linear, left top, left bottom, 
+		color-stop(0, #fff), color-stop(0.48, hsl(217, 73%, 97%)), color-stop(0.51, hsl(217, 62%, 95%)));
 	-webkit-box-shadow: 0px 1px 2px #ddd;
+	
 	top:20px;
 }
+.maintable{
+border:solid 1px #abc ;
+}
+
 h1
 {
  font-family:Verdana, Arial, Helvetica, sans-serif;
  font-size:40px;
+
 
  top:20px;
  
@@ -34,6 +41,9 @@ h1
 
 	position:relative;
 	top: 10px;
+	border:solid 1px #abc ;
+	
+	
 	
 }
 .rulesTable {
@@ -61,6 +71,7 @@ font-size:18px;
 .rulesTable td{
 background-color:#fff;
 height:25px;
+font-size:12px;
 
 }
 table {
@@ -70,6 +81,7 @@ border-color: blue;
 }
 #tab1,#tab2,#tab3,#tab4{
 background-color:#f8fafc;
+border-top:solid 1px #abc ;
 
 }
 .templateRow {
@@ -109,6 +121,8 @@ height: 100%;
 		color-stop(0, #fff), color-stop(0.4, hsl(0, 0%, 96%)), color-stop(0.41, hsl(0, 0%, 92%)));
 		
 	-webkit-box-shadow: 0px 1px 2px #ddd;
+	position:relative;
+	margin-left:24.6px;
 	}
 .button:hover {
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f6fafe), color-stop(1, #e3ebf7));
@@ -121,5 +135,9 @@ height: 100%;
 }
 *:focus{
 outline:none;
+}
+li{
+font-size:15px;
+
 }
 
