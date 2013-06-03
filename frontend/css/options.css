@@ -174,11 +174,15 @@ font-size:18px;
 border:solid 1px #abc;
 border-bottom-left-radius:6px;
 border-bottom-right-radius:6px;
+border-top:none;
 
 
 }
 #tabs ul{
 margin-left:-4px;
+
+border-bottom:1px solid #abc;
+border-radius:0;
 }
 #btnRefreshWebReqRule{
 margin-left:30.6px;
