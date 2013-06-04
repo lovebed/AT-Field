@@ -23,14 +23,14 @@ onBeforeRequestDealer = function onBeforeRequestDealer(details){
                 scriptLog[reqUrl]={};
                 scriptLog[reqUrl].num=1;
                 scriptLog[reqUrl].referer={};
-            }else{
-                scriptLog[reqUrl].num++;
-            };
-            if(scriptLog[reqUrl].referer[refererDomain]===undefined){
                 scriptLog[reqUrl].referer[refererDomain]=1;
             }else{
-                scriptLog[reqUrl].referer[refererDomain]++;
-            }
+                if(scriptLog[reqUrl].referer[refererDomain]===undefined){
+                    scriptLog[reqUrl].referer[refererDomain]=1;
+                    scriptLog[reqUrl].num++;
+                };
+            };
+            
         }
     }
 
