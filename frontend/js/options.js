@@ -7,7 +7,7 @@ function init()
 	$('#btnRefreshWebReqRule').click(function () {refreshWebReqRule(); });
 	$('#btnRefreshCookieRule').click(function () {refreshCookieRule(); });
 	$('#btnRefreshWhiteRule').click(function () {refreshWhiteRule(); });
-	
+	$('#btnRefreshScriptLog').click(function () {showAllScriptLog(); });
 
 	$(".webAdd").click(function () {newOneWebReqRule(); });	
 	$(".cookieAdd").click(function () {newOneCookieRule(); });
@@ -15,6 +15,10 @@ function init()
 	showAllWebReqRule();
 	showAllCookieRule();
 	showAllWhiteRule();
+	showAllScriptLog();
+	$('.logRow').click(function () {
+		$(event.target.parentNode.nextSibling).toggle();
+	})
 	$(".webDelete").click(function () {webdeleteFn();});
 	$(".cookieDelete").click(function () {cookiedeleteFn();});
 	$(".whiteDelete").click(function () {whitedeleteFn();});
@@ -122,6 +126,8 @@ function newOneWhiteRule(){
 	$(".whiteDelete").click(function () {whitedeleteFn();});
 	refreshBGrules();
 }
+
+
 function showAllWebReqRule(){
 	var list = optionsGetList("webreq");
 	var len = list.length;
@@ -206,6 +212,57 @@ function addOneWhiteRule(j,k){
 		var webRul = $(".whiteRow .domain");
 		webRul.removeClass("domain").addClass("newdomain");		
 		webRul.text(show);
+}
+function showAllScriptLog(){
+	var log = getScriptLog();
+	var len = log.length;
+
+	if(len>0)
+	{
+		for (var i = 0; i < len; i++) 
+		{
+			addOneScriptLog(log,i);		
+		}	
+	}else{
+		alert("none");
+	}
+	$('.logRefer').hide();
+
+}
+function addOneScriptLog(log,k){
+	
+	var table = $("#scriptLog");
+	var row = $("#scriptLog .templateRow").clone();
+	row.removeClass("templateRow").addClass("logRow");	
+	table.append(row);
+	row = $("#scriptLog .templateRow2").clone();
+	row.removeClass("templateRow2").addClass("logRefer");	
+	table.append(row);			
+
+	var show = log[k].name;
+	var webRul = $(".logRow .logName");
+	webRul.removeClass("logName").addClass("newlogName");		
+	webRul.text(show);
+
+	show = log[k].num;
+	webRul = $(".logRow .logNum");
+	webRul.removeClass("logNum").addClass("newlogNum");		
+	webRul.text(show);
+
+	var tatalReferer = log[k].referer;
+	var rlen = tatalReferer.length;
+	show = "";
+	for (var i = 0; i < rlen; i++) 
+	{
+		show += tatalReferer[i]+'\n';	
+	}
+
+//	var show1 = log[k].referer;
+//	show = show1[0];
+	webRul = $(".logRefer .logReferArr");
+	webRul.removeClass("logReferArr").addClass("newlogReferArr");		
+	webRul.text(show);
+
 }
 
 
