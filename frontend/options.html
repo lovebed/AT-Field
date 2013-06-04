@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
 	<meta charset="utf-8">
-	<title>AntiField</title>
+	<title>AT-Field选项</title>
 	<script type="text/javascript" src= "js/jquery-1.9.1.js"></script>
 	<script type="text/javascript" src= "js/jquery-ui-1.10.3.custom.min.js"></script>
 	<script type="text/javascript" src= "../modules/extensionStorage.js"></script>
@@ -32,32 +32,30 @@
 				<div id="tabs">						
 				<ul>
 						    <li class="selected">
-								<a href="#tab1"><img src="home.png" style="width:16px;vertical-align:bottom;height:16px;" alt="home" />Home</a>
+								<a href="#tab1"><img src="home.png" style="width:16px;vertical-align:bottom;height:16px;" alt="home" />主选项</a>
 							</li>
 
 							<li class="normal">
-								<a href="#tab2"><img src="webreqrule.png" style="width:16px;vertical-align:bottom;height:16px;" alt="webreqrule" />
-								webReqRuleList</a>
+								<a href="#tab2"><img src="webreqrule.png" style="width:16px;vertical-align:bottom;height:16px;" alt="webreqrule" />HTTP请求拦截规则</a>
 							</li>
 							<li class="normal">
-								<a href="#tab3"><img src="cookie.png" style="width:16px;vertical-align:bottom;height:16px;" alt="cookierule" />CookieRuleList</a>
+								<a href="#tab3"><img src="cookie.png" style="width:16px;vertical-align:bottom;height:16px;" alt="cookierule" />Cookie拦截规则</a>
 							</li>
 							<li class="normal">
-								<a href="#tab4"><img src="whitelist.png" style="width:16px;vertical-align:bottom;height:16px;" alt="whitelist" />
-								domainWhiteList</a>
+								<a href="#tab4"><img src="whitelist.png" style="width:16px;vertical-align:bottom;height:16px;" alt="whitelist" />白名单列表</a>
 							</li>
 						</ul>
 						<div id="tabsbody">
 						<div id="tab1">
 						</div>
 						<div id="tab2">
-							<table align="center" id="webReqRulesTable" class="rulesTable" style="width>
+							<table align="center" id="webReqRulesTable" class="rulesTable">
 								<tr class="tableHeader">
 									<th style="width:395px" >
-										<span>pattern</span>
+										<span>拦截脚本地址</span>
 									</th>
 									<th style="width:324px">
-										<span>domain</span>
+										<span>白名单域名</span>
 									</th>
 									<th style="width:126px"><span>删除规则</span></th>
 								</tr>
@@ -85,25 +83,24 @@
 										<div class="webAdd" title="添加规则">&nbsp</div>
 									</td>
 								</tr>
-
 							</table>
 							<button class="button" id="btnRefreshWebReqRule"> 
 							
 									<img src="ref.png" style="width:16px;vertical-align:bottom;height:16px;" alt="refresh" />
-									<span>Refresh</span>
+									<span>刷新列表</span>
 							</button>
 						</div>
 						<div id="tab3">
 							<table id="cookieRulesTable" class="rulesTable" align="center">
 								<tr class="tableHeader">
 									<th style="width:600px" >
-										<span>domain</span>
+										<span>Cookie归属域名</span>
 									</th>
 									<th style="width:135px">
-										<span>keypat</span>
+										<span>key名匹配式</span>
 									</th>
 									<th style="width:110px">
-								      <span> 删除规则</span></th>
+								      <span>删除规则</span></th>
 								</tr>
 								<tr id="templateCookieRow" class = "templateRow">
 									<td class = "cookieseq">
@@ -133,14 +130,14 @@
 							<button class="button" id="btnRefreshCookieRule"> 
 							
 	                                <img src="ref.png" style="width:16px;vertical-align:bottom;height:16px;" alt="refresh" />
-									<span>Refresh</span>
+									<span>刷新列表</span>
 							</button>
 						</div>
 						<div id="tab4">
 							<table id="whiteRulesTable" class="rulesTable" align="center">
 								<tr class="tableHeader">
 									<th style="width:644px">
-										<span>domain</span>
+										<span>域名</span>
 									</th>
 									<th style="width:201px">删除规则</th>
 								</tr>
@@ -165,7 +162,7 @@
 							</table>								
 							<button class="button" id="btnRefreshWhiteRule"> 
 							<img src="ref.png" style="width:16px;vertical-align:bottom;height:16px;" alt="refresh" />
-									<span>Refresh</span>
+									<span>刷新列表</span>
 							</button>
 						</div>
 				</div>
