@@ -18,4 +18,3 @@ cookieOnChangeDealer = function cookieOnChangeDealer(changeInfo){
     };
 };
 
-chrome.cookies.onChanged.addListener(cookieOnChangeDealer);

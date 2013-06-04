@@ -1,31 +1,5 @@
-var ruleMan = {};
 
-function FifoCache(size) {
-  this._size = Math.max(size, 0);
-  this._cacheKeys = [];
-  this._cache = {};
-}
-FifoCache.prototype = {
-  // Add an entry to the cache, evicting the (size)th-oldest entry if the cache
-  // is full.
-  set: function(key, value) {
-    var alreadyCached = (key in this._cache);
-    this._cache[key] = value;
-
-    if (!alreadyCached) {
-      this._cacheKeys.push(key); // add to the end
-      if (this._cacheKeys.length > this._size) {
-        delete this._cache[this._cacheKeys[0]];
-        this._cacheKeys.shift(); // remove from the beginning
-      }
-    }
-  },
-
-  // Return an entry from the cache, or undefined if key is not in the cache.
-  get: function(key) {
-    return this._cache[key];
-  }
-};
+ruleMan = {};
 
 ruleMan.cache = {
     webreq:new FifoCache(100),
@@ -34,21 +8,6 @@ ruleMan.cache = {
 };
 
 ruleMan.rules = {};
-
-parseURL = function parseURL(url){
-    var matches = /^(([^:]+(?::|$))(?:(?:\w+:)?\/\/)?(?:[^:@\/]*(?::[^:@\/]*)?@)?(([^:\/?#]*)(?::(\d*))?))((?:[^?#\/]*\/)*[^?#]*)(\?[^#]*)?(\#.*)?/.exec(url);
-    // The key values are identical to the JS location object values for that key
-    var keys = ["href", "origin", "protocol", "host", "hostname", "port",
-              "pathname", "search", "hash"];
-    var uri = {};
-    for (var i=0; i<keys.length; i++)
-        uri[keys[i]] = matches[i] || "";
-    return uri;
-};
-
-extractDomain = function extractDomain(url){
-    return parseURL(url).host;
-};
 
 ruleMan.init = function init(){
     ruleMan.loadRules();
@@ -112,7 +71,7 @@ ruleMan.testWebReq = function testWebReq(instWebReq){
         return result;
     };
     result = false;
-    var jsDomain = extractDomain(instWebReq.url);
+    var jsDomain = extractTool.domain(instWebReq.url);
     for(var i=0,l=ruleMan.rules.webreq.length;i<l;i++){
         if(ruleMan.regExpMatch(instWebReq.url,ruleMan.rules.webreq[i].pattern)){
             if(ruleMan.rules.webreq[i].domain != ""){
