@@ -1,6 +1,7 @@
 var o = {
 
 }
+
 function init()
 {
 	$('#btnRefreshWebReqRule').click(function () {refreshWebReqRule(); });
@@ -18,9 +19,26 @@ function init()
 	$(".cookieDelete").click(function () {cookiedeleteFn();});
 	$(".whiteDelete").click(function () {whitedeleteFn();});
 }
+function getScriptLog(){
+	var scriptlogTab=[];
+	var BG=chrome.extension.getBackgroundPage();
+	var scriptlogObj=BG.scriptLog;
+//	console.log(scriptlogObj);
+	for(item in scriptlogObj){
+		var tempItem={};
+		tempItem.name=item;
+		tempItem.num=scriptlogObj[item].num;
+		tempItem.referer=[];
+		for(innerItem in scriptlogObj[item].referer){
+			tempItem.referer.push(innerItem);
+		};
+		scriptlogTab.push(tempItem);
+	};
+	return scriptlogTab;
+};
 function refreshBGrules(){
 	//刷新后台页面规则
-	BG=chrome.extension.getBackgroundPage();
+	var BG=chrome.extension.getBackgroundPage();
 	BG.ruleMan.refresh();
 }
 function refreshWebReqRule(){
