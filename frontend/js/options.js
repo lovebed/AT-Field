@@ -7,7 +7,7 @@ function init()
 	$('#btnRefreshWebReqRule').click(function () {refreshWebReqRule(); });
 	$('#btnRefreshCookieRule').click(function () {refreshCookieRule(); });
 	$('#btnRefreshWhiteRule').click(function () {refreshWhiteRule(); });
-	$('#btnRefreshScriptLog').click(function () {showAllScriptLog(); });
+	$('#btnRefreshScriptLog').click(function () {refreshScriptLog(); });
 
 	$(".webAdd").click(function () {newOneWebReqRule(); });	
 	$(".cookieAdd").click(function () {newOneCookieRule(); });
@@ -22,7 +22,11 @@ function init()
 	$(".webDelete").click(function () {webdeleteFn();});
 	$(".cookieDelete").click(function () {cookiedeleteFn();});
 	$(".whiteDelete").click(function () {whitedeleteFn();});
+//	$('#tab5').bind('tabsselect',function test(){
+//	alert("lds");
+//	});
 }
+
 function getScriptLog(){
 	var scriptlogTab=[];
 	var BG=chrome.extension.getBackgroundPage();
@@ -60,6 +64,15 @@ function refreshWhiteRule(){
 	showAllWhiteRule();
 	$(".whiteDelete").click(function () {whitedeleteFn();});
 }
+function refreshScriptLog(){
+	$('.logRow').remove();
+	$('.logRefer').remove();
+	showAllScriptLog();
+	$('.logRow').click(function () {
+		$(event.target.parentNode.nextSibling).toggle();
+	})
+}
+
 
 function webdeleteFn(){
 	var row = event.target.parentNode.parentNode;
@@ -216,19 +229,39 @@ function addOneWhiteRule(j,k){
 function showAllScriptLog(){
 	var log = getScriptLog();
 	var len = log.length;
+	var sortedLog = bubbleSort(log,len);
 
 	if(len>0)
 	{
 		for (var i = 0; i < len; i++) 
 		{
-			addOneScriptLog(log,i);		
+			addOneScriptLog(sortedLog,i);		
 		}	
 	}else{
-		alert("none");
+		alert("插件运行期间未捕获到数据，让插件再跑一会儿吧！");
 	}
 	$('.logRefer').hide();
 
 }
+function bubbleSort(arr, len)
+{
+    var i,j,t;
+     for(i=0;i<len-1;i++)
+    {
+        for(j=0;j<len-i-1;j++)
+        {
+            if(arr[j+1].num>arr[j].num)
+            {
+              t=arr[j+1];
+              arr[j+1]=arr[j];
+              arr[j]=t;
+             }
+        }
+    }
+    return arr;
+ 
+}
+
 function addOneScriptLog(log,k){
 	
 	var table = $("#scriptLog");
@@ -254,14 +287,14 @@ function addOneScriptLog(log,k){
 	show = "";
 	for (var i = 0; i < rlen; i++) 
 	{
-		show += tatalReferer[i]+'\n';	
+		show += tatalReferer[i]+'<br>';	
 	}
 
 //	var show1 = log[k].referer;
 //	show = show1[0];
 	webRul = $(".logRefer .logReferArr");
 	webRul.removeClass("logReferArr").addClass("newlogReferArr");		
-	webRul.text(show);
+	webRul.html(show);
 
 }
 
