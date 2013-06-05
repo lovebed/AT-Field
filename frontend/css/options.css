@@ -75,12 +75,12 @@ font-weight: bold;
 color: #6e809d;
 white-space: nowrap;
 overflow: hidden;
-font-size:16px;
+font-size:18px;
 }
 .rulesTable td{
 background-color:#fff;
 height:25px;
-font-size:14px;
+font-size:18px;
 font-family:Verdana, Arial, Helvetica, sans-serif;
 direction:ltr;
 
@@ -182,21 +182,22 @@ border-top:none;
 
 }
 #tabs ul{
-margin-left:-4px;
+
 
 border-bottom:1px solid #abc;
 border-radius:0;
 }
-#btnRefreshWebReqRule{
-margin-left:30.6px;
-}
-#btnRefreshCookieRule{
-margin-left:20px;
-}
-#btnRefreshWhiteRule{
-margin-left:33px;
-}
+
 input{
-width:100%;
+width:95%;
+vertical-align:middle;
+display:block;
+
+}
+.tab21,.tab31,.tab41,.tab51{
+background-color:  #f2f7f9;
+border:solid 1px  #ccddee;
+width:850px;
+height:auto;
 }
 	
