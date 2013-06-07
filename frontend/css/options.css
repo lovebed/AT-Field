@@ -32,24 +32,15 @@ h1
 {
  font-family:Verdana, Arial, Helvetica, sans-serif;
  font-size:40px;
-
-
  top:20px;
- 
-}
+ }
 
 #mainer{
 
 	position:relative;
 	top: 10px;
+	overflow:scroll;
 		
-
-
-	
-
-	
-	
-	
 }
 .rulesTable {
 border-spacing: 0px;
@@ -59,10 +50,8 @@ border-radius:3px 3px 0 0;
 opacity: 0.8;
 position:relative;
 top:15px;
-
-
-
-	}
+width:845px;
+}
 tr {
 display: table-row;
 vertical-align: inherit;
@@ -79,17 +68,14 @@ color: #6e809d;
 white-space: nowrap;
 overflow: hidden;
 border:solid 1px #e5ecf9;
-
 }
 .rulesTable td{
 background-color:#fff;
-height:9px;
-
 font-family:Verdana, Arial, Helvetica, sans-serif;
 direction:ltr;
 padding:10px;
 border:solid 1px #e5ecf9;
-
+max-width:800px;
 }
 table {
 border-collapse: separate;
@@ -101,19 +87,11 @@ background-color:#f8fafc;
 display:none;
 padding-left:40px;
 border:solid 1px #abc;
-	border-top:none;
-
-
-
-
-
-
-
-
-
+border-top:none;
 }
 .templateRow {
 display: none;
+
 }
 .templateRow2 {
 display: none;
@@ -182,32 +160,23 @@ border-top:none;
 
 }
 #tabs ul{
-
-
 border-bottom:1px solid #abc;
 border-radius:0;
 }
 li{
 font-weight:50;
-
 }
 
 input{
 width:100%;
-
-
 padding-left:3px;
 padding-right:-5px;
-
-
 }
 .tab21,.tab31,.tab41,.tab51{
 
 border:solid 1px  #abc;
 width:auto;
 font-family:"Î¢ÈíÑÅºÚ",ËÎÌå;
-
-
 height:auto;
 padding:6px;
 background-color:#999999;
@@ -215,15 +184,50 @@ background: -webkit-gradient(linear, left top, left bottom, color-stop(0,#e5ecf9
 background: -webkit-gradient(linear, left top, left bottom, olor-stop(0, #fff), color-stop(0.48, hsl(217, 73%, 97%)), color-stop(0.51, hsl(217, 62%, 95%)))
 display:block;
 direction:ltr;
-
 color:#567/*#000066*/;
-
-
 opacity: 0.8;
 width:837px;
 border-radius:3px ;
 
 }
 
+.rulesTable5 th {
+height:30px;
+background-color:#999999;
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0,#e5ecf9), color-stop(1, #C0D9D9));
+background: -webkit-gradient(linear, left top, left bottom, olor-stop(0, #fff), color-stop(0.48, hsl(217, 73%, 97%)), color-stop(0.51, hsl(217, 62%, 95%)));
+font-weight: bold;
+color: #6e809d;
+white-space: nowrap;
+overflow: hidden;
+border:1px solid #fff;
 
-	
+
+}
+.rulesTable5 td{
+
+font-family:Verdana, Arial, Helvetica, sans-serif;
+direction:ltr;
+padding:10px;
+max-width:800px;
+overflow:auto;
+
+
+
+
+}
+
+.rulesTable5 {
+border-spacing: 0px;
+-webkit-box-shadow: 0px 0px 2px #ddd;
+border:solid 1px #d0d6d9;
+border-radius:3px 3px 0 0;
+opacity: 0.8;
+position:relative;
+top:15px;
+width:845px;
+}
+
+
+
+
