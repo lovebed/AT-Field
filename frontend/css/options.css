@@ -96,6 +96,9 @@ display: none;
 .templateRow2 {
 display: none;
 }
+.templateRowtp {
+display: none;
+}
 .newwebseq {
 display: none;
 }
@@ -104,6 +107,11 @@ display: none;
 }
 .newwhiteseq {
 display: none;
+}
+.webReqRow1 .webDelete {
+background: url("../../img/delete.png") center no-repeat;
+cursor: pointer;
+height: 100%;
 }
 .webReqRow .webDelete, .cookieRow .cookieDelete, .whiteRow .whiteDelete {
 background: url("../../img/delete.png") center no-repeat;
@@ -227,7 +235,15 @@ position:relative;
 top:15px;
 width:845px;
 }
-
-
+#templateScriptLogRow .newlogName{
+	background-color:#ADD8E6;
+	background: -webkit-gradient(linear, left top,leftbottom,color-stop(0,#00BFFF), color-stop(1, #4169E1));background: -webkit-gradient(linear, left top, left bottom, 
+color-stop(0, #fff), color-stop(0.48, hsl(217, 73%, 97%)), color-stop(0.51, hsl(217, 62%, 95%)));
+}
+#templateScriptLogRow .logNum{
+	background-color:#ADD8E6;
+	background: -webkit-gradient(linear, left top,leftbottom,color-stop(0,#00BFFF), color-stop(1, #1E90FF));background: -webkit-gradient(linear, left top, left bottom, 
+color-stop(0, #fff), color-stop(0.48, hsl(217, 73%, 97%)), color-stop(0.51, hsl(217, 62%, 95%)));
+}
 
 

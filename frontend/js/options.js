@@ -15,6 +15,7 @@ function init()
 	showAllWebReqRule();
 	showAllCookieRule();
 	showAllWhiteRule();
+	showAllWebReqRuletp();
 	showAllScriptLog();
 	$('.logRow').click(function () {
 		$(event.target.parentNode.nextSibling).toggle();
@@ -169,6 +170,30 @@ function addOneWebReqRule(j,k){
 		show = list[k]["domain"];
 		webRul = $(".webReqRow .domain");
 		webRul.removeClass("domain").addClass("newdomain");
+		webRul.text(show);	
+}
+function showAllWebReqRuletp(){
+	var list = optionsGetList("webreq");
+	var len = list.length;
+	for (var i = 0; i < len; i++) 
+	{
+		addOneWebReqRuletp(list,i);		
+	}
+}
+function addOneWebReqRuletp(j,k){
+		var table = $("#webReqRulesTabletp");
+		var row = $("#webReqRulesTabletp .templateRowtp").clone();
+		row.removeClass("templateRowtp").addClass("webReqRow1");	
+		table.append(row);		
+		var list = j;
+		var show = list[k]["pattern"];
+		var webRul = $(".webReqRow1 .pattern1");
+		webRul.removeClass("pattern1").addClass("newpattern1");		
+		webRul.text(show);
+
+		show = list[k]["domain"];
+		webRul = $(".webReqRow1 .domain1");
+		webRul.removeClass("domain1").addClass("newdomain1");
 		webRul.text(show);	
 }
 function showAllCookieRule(){
