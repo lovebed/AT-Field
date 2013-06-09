@@ -37,6 +37,12 @@
 							</a>
 						</li>
 						<li >
+							<a href="#tab5">
+								<img src="img/webreqrule.png" style="width:16px;vertical-align:middle;height:16px;" alt="webreqrule" />
+								跨域脚本监控记录
+							</a>
+						</li>
+						<li >
 							<a href="#tab2">
 								<img src="img/webreqrule.png" style="width:16px;vertical-align:middle;height:16px;" alt="webreqrule" />
 								HTTP请求拦截规则
@@ -48,29 +54,63 @@
 								Cookie拦截规则
 							</a>
 						</li>
-
+						<li >
+							<a href="#tab6">
+								<img src="img/whitelist.png" style="width:16px;vertical-align:middle;height:16px;" alt="whitelist" />
+								引用源拦截规则
+							</a>
+						</li>
 						<li>
 							<a href="#tab4">
 								<img src="img/whitelist.png" style="width:16px;vertical-align:middle;height:16px;" alt="whitelist" />
 								白名单列表
 							</a>
 						</li>
-						<li >
-							<a href="#tab5">
-								<img src="img/webreqrule.png" style="width:16px;vertical-align:middle;height:16px;" alt="webreqrule" />
-								跨域脚本监控记录
-							</a>
-						</li>
-						<li >
-							<a href="#tab6">
-								<img src="img/whitelist.png" style="width:16px;vertical-align:middle;height:16px;" alt="whitelist" />
-								引用源拦截模块
-							</a>
-						</li>
 					</ul>
 					<div id="tabsbody">
-						<div id="tab1"></div>
+						<div id="tab1">
+							<div>
+								<form>
+									<input type = "checkbox" value = "1"/>
+									HTTP请求拦截<br/>							
+									<input type = "checkbox" value = "y2"/>
+									Cookie拦截<br/>
+									<input type = "checkbox" value = "ye3"/>
+									引用源拦截<br/>	
+								</form>					
+							</div>
+						</div>
+						<div id="tab5" >
+							<div class="tab51">
+								下表列出的内容为被跨域引用的脚本及其被跨域引用的次数。
+								<br/>
+								<br/>
+								被引用的次数较多的脚本有较高的可能性为广告/痕迹追踪脚本
+							</div>
+							<table  id="scriptLog" class="rulesTable5">
+								<tr class="tableHeader">
+									<th  class="scriptname">
+										<span>脚本URL</span>
+									</th>
+									<th style="width:45px">
+										<span>引用次数</span>
+									</th>
+								</tr>
+								<tr id="templateScriptLogRow" class = "templateRow"  >
+									<td class = "logName"></td>
+									<td class = "logNum"></td>
+								</tr>
+								<tr id ="templateScriptLogRefer" class = "templateRow2">
+									<td class = "logReferArr"  style="background-color:#C0D9D9;" ></td>
+									<td class="logrefernun" 	style="background-color:#C0D9D9;"></td>
+								</tr>
+							</table>
 
+							<button class="button" id="btnRefreshScriptLog">
+								<img src="img/ref.png" style="width:16px;vertical-align:bottom;height:16px;" alt="refresh" />
+								<span>刷新列表</span>
+							</button>
+						</div>
 						<div id="tab2" >
 							<div class="tab21"> <strong>本页显示的为HTTP请求拦截模块所使用的规则列表。</strong>
 								<br/>
@@ -244,37 +284,7 @@
 								<span>刷新列表</span>
 							</button>
 						</div>
-						<div id="tab5" >
-							<div class="tab51">
-								下表列出的内容为被跨域引用的脚本及其被跨域引用的次数。
-								<br/>
-								<br/>
-								被引用的次数较多的脚本有较高的可能性为广告/痕迹追踪脚本
-							</div>
-							<table  id="scriptLog" class="rulesTable5">
-								<tr class="tableHeader">
-									<th  class="scriptname">
-										<span>脚本URL</span>
-									</th>
-									<th style="width:45px">
-										<span>引用次数</span>
-									</th>
-								</tr>
-								<tr id="templateScriptLogRow" class = "templateRow"  >
-									<td class = "logName"></td>
-									<td class = "logNum"></td>
-								</tr>
-								<tr id ="templateScriptLogRefer" class = "templateRow2">
-									<td class = "logReferArr"  style="background-color:#C0D9D9;" ></td>
-									<td class="logrefernun" 	style="background-color:#C0D9D9;"></td>
-								</tr>
-							</table>
 
-							<button class="button" id="btnRefreshScriptLog">
-								<img src="img/ref.png" style="width:16px;vertical-align:bottom;height:16px;" alt="refresh" />
-								<span>刷新列表</span>
-							</button>
-						</div>
 					</div>
 				</div>
 			</td>

@@ -74,36 +74,45 @@ function refreshScriptLog(){
 	})
 }
 
-
 function webdeleteFn(){
 	var row = event.target.parentNode.parentNode;
 	var childrow = event.target.parentNode.parentNode.childNodes[1];
 	var num = $(childrow).text();
-	deleteList("webreq",num);
-	removeAllWebReq();
-	showAllWebReqRule();
-	$(".webDelete").click(function () {webdeleteFn();});
-	refreshBGrules();
+	var r=confirm("确认删除？此操作将不可恢复！");
+	if (r==true){
+		deleteList("webreq",num);
+		removeAllWebReq();
+		showAllWebReqRule();
+		$(".webDelete").click(function () {webdeleteFn();});
+		refreshBGrules();
+	}
+
 }
 function cookiedeleteFn(){
 	var row = event.target.parentNode.parentNode;
 	var childrow = event.target.parentNode.parentNode.childNodes[1];
 	var num = $(childrow).text();
-	deleteList("cookie",num);
-	removeAllCookie();
-	showAllCookieRule();
-	$(".cookieDelete").click(function () {cookiedeleteFn();});
-	refreshBGrules();
+	var r=confirm("确认删除？此操作将不可恢复！");
+	if (r==true){
+		deleteList("cookie",num);
+		removeAllCookie();
+		showAllCookieRule();
+		$(".cookieDelete").click(function () {cookiedeleteFn();});
+		refreshBGrules();
+	}
 }
 function whitedeleteFn(){
 	var row = event.target.parentNode.parentNode;
 	var childrow = event.target.parentNode.parentNode.childNodes[1];
 	var num = $(childrow).text();
-	deleteList("white",num);
-	removeAllWhite();
-	showAllWhiteRule();
-	$(".whiteDelete").click(function () {whitedeleteFn();});
-	refreshBGrules();
+	var r=confirm("确认删除？此操作将不可恢复！");
+	if (r==true){
+		deleteList("white",num);
+		removeAllWhite();
+		showAllWhiteRule();
+		$(".whiteDelete").click(function () {whitedeleteFn();});
+		refreshBGrules();
+	}
 }
 function removeAllWebReq(){
 	$('.webReqRow').remove();
@@ -117,28 +126,44 @@ function removeAllWhite(){
 function newOneWebReqRule(){
 	var pattern1 = $("#newWebReqRow #addPattern").val();
 	var domian1 = $("#newWebReqRow #addDomain").val();
-	addListMember("webreq",["pattern","domain"],[pattern1,domian1]);
-	removeAllWebReq();
-	showAllWebReqRule();
-	$(".webDelete").click(function () {webdeleteFn();});
-	refreshBGrules();
+	if((pattern1=='')||(domian1=='')){
+		alert("输入不能为空！");
+
+	}else{
+		addListMember("webreq",["pattern","domain"],[pattern1,domian1]);
+		removeAllWebReq();
+		showAllWebReqRule();
+		$(".webDelete").click(function () {webdeleteFn();});
+		refreshBGrules();
+	}
 }
 function newOneCookieRule(){
 	var domain1 = $("#newCookieRow #addDomain").val();
 	var keypat1 = $("#newCookieRow #addKeypat").val();
-	addListMember("cookie",["domain","keypat"],[domain1,keypat1]);
-	removeAllCookie();
-	showAllCookieRule();
-	$(".cookieDelete").click(function () {cookiedeleteFn();});
-	refreshBGrules();
+
+	if((domain1=='')||(keypat1=='')){
+		alert("输入不能为空！");
+
+	}else{
+		addListMember("cookie",["domain","keypat"],[domain1,keypat1]);
+		removeAllCookie();
+		showAllCookieRule();
+		$(".cookieDelete").click(function () {cookiedeleteFn();});
+		refreshBGrules();
+	}
 }
 function newOneWhiteRule(){
 	var domain1 = $("#newWhiteRow #addDomain").val();
-	addListMember("white","",domain1);
-	removeAllWhite();
-	showAllWhiteRule();
-	$(".whiteDelete").click(function () {whitedeleteFn();});
-	refreshBGrules();
+	if(domain1==''){
+		alert("输入不能为空！");
+
+	}else{
+		addListMember("white","",domain1);
+		removeAllWhite();
+		showAllWhiteRule();
+		$(".whiteDelete").click(function () {whitedeleteFn();});
+		refreshBGrules();
+	}
 }
 
 

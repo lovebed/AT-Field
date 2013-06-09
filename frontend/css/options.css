@@ -82,30 +82,14 @@ border-collapse: separate;
 border-spacing: 2px;
 border-color: blue;
 }
-#tab1,#tab2,#tab3,#tab4,#tab5{
+#tab1,#tab2,#tab3,#tab4,#tab5,#tab6{
 background-color:#f8fafc;
 display:none;
 padding-left:40px;
 border:solid 1px #abc;
 border-top:none;
 }
-.templateRow {
-display: none;
-
-}
-.templateRow2 {
-display: none;
-}
-.templateRowtp {
-display: none;
-}
-.newwebseq {
-display: none;
-}
-.newcookieseq {
-display: none;
-}
-.newwhiteseq {
+.templateRow, .templateRow2, .templateRowtp, .newwebseq, .newcookieseq, .newwhiteseq{
 display: none;
 }
 .webReqRow1 .webDelete {
@@ -141,9 +125,7 @@ height: 90%;
 	position:relative;
 	top:15px;
 	direction:inherit;
-	
-	
-	}
+}
 .button:hover {
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f6fafe), color-stop(1, #e3ebf7));
 	background: -webkit-gradient(linear, left top, left bottom, 
@@ -175,7 +157,7 @@ li{
 font-weight:50;
 }
 
-input{
+#addPattern, #addDomain, #addKeypat input{
 width:100%;
 padding-left:3px;
 padding-right:-5px;
