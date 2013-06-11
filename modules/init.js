@@ -40,3 +40,5 @@ ruleMan.init();
 chrome.webRequest.onBeforeRequest.addListener(onBeforeRequestDealer, {urls: ["http://*/*", "https://*/*"]}, ["blocking"]);
 chrome.cookies.onChanged.addListener(cookieOnChangeDealer);
 chrome.tabs.onRemoved.addListener(onTabClosedHandler);
+chrome.webRequest.onBeforeSendHeaders.addListener(onBeforeSendHeadersDealer,{urls: ["http://*/*", "https://*/*"]}, 
+["requestHeaders", "blocking"]);
