@@ -126,7 +126,7 @@ function removeAllWhite(){
 function newOneWebReqRule(){
 	var pattern1 = $("#newWebReqRow #addPattern").val();
 	var domian1 = $("#newWebReqRow #addDomain").val();
-	if(pattern1=='')){
+	if(pattern1==''){
 		alert("输入不能为空！");
 
 	}else{
