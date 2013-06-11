@@ -57,7 +57,7 @@
 						<li >
 							<a href="#tab6">
 								<img src="img/reference.png" style="width:16px;vertical-align:middle;height:16px;" alt="whitelist" />
-								引用源拦截规则
+								引用源消除规则
 							</a>
 						</li>
 						<li>
@@ -76,7 +76,7 @@
 									<input type = "checkbox" value = "y2"/>
 									Cookie拦截<br/>
 									<input type = "checkbox" value = "ye3"/>
-									引用源拦截<br/>	
+									引用源消除<br/>	
 								</form>					
 							</div>
 						</div>
@@ -211,11 +211,20 @@
 							</button>
 						</div>
 						<div id="tab6" >
-							<div class="tab21">我在想今天特别希望看到他在四川大学这样一个演播厅，面对着川大的同学们，他会有怎样的真知灼见或者是心得体会。</div>
+							<div class="tab21"><strong>本页显示的为引用源消除模块所使用的规则列表。</strong>
+								<br/>
+								<br/>
+								各列意义为：
+								<br/>
+								①跨域引用资源URL：需要消除引用源的资源的URL。仅当该资源被跨域名引用时起效。支持通配符匹配。
+								<br/>
+								②白名单域名：当引用该资源的网页的域名为白名单域名时，不进行引用源消除操作。支持通配符匹配。
+								<br/>
+								③添加/删除规则：点击红色的减号可删除本行规则，点击绿色的加号可以将文本框中写好的规则添加进列表中。</div>
 							<table  id="webReqRulesTabletp" class="rulesTable">
 								<tr class="tableHeader">
 									<th style="width:395px" >
-										<span>拦截脚本地址</span>
+										<span>跨域引用资源URL</span>
 									</th>
 									<th style="width:324px">
 										<span>白名单域名</span>

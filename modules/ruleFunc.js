@@ -104,6 +104,7 @@ ruleMan.testCook = function testCook(instCook){
         if(ruleMan.regExpMatch(instCook.domain,ruleMan.rules.cook[i].domain)){
             if(ruleMan.regExpMatch(instCook.key,ruleMan.rules.cook[i].keypat)){
                 result=true;
+                break;
             }else{
                 result=false;
             };
