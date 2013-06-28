@@ -1,7 +1,10 @@
 onBeforeSendHeadersDealer = function onBeforeSendHeadersDealer(details){
-    var rule="http://www\.google-analytics\.com/ga\.js";
-    var ruleexp=new RegExp(rule);
-    if(ruleexp.test(details.url)){
+    var instRefer = {};
+    instRefer.url = details.url;
+    instRefer.domain = extractTool.domain(getTabUrl(details.tabId));
+
+    var checkResult = ruleMan.testNoRefer(instRefer);
+    if(checkResult){
         var headers=details.requestHeaders;
         for (var j = 0, l = headers.length; j < l; j++) {
             if (headers[j].name == "Referer") {

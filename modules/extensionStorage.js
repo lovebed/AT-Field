@@ -47,6 +47,8 @@ optionsGetList = function(key){
         case "white":
             return storageGet("domainWhiteList");
             break;
+        case "norefer":
+            return storageGet("noRefererList");
         default:
             console.log("Invalid optionsGetList Call: " + key);
             return undefined;
@@ -85,9 +87,13 @@ cookieRule1 = function(attribute,value){
         this[attribute[1]] = value[1];
 
     }
+noreferRule1 = function(attribute,value){
+    this[attribute[0]] = value[0];
+    this[attribute[1]] = value[1];
+}
 addListMember = function(key,attribute,value,num)
 {
-   var list = optionsGetList(key);
+    var list = optionsGetList(key);
     var leng=list.length;
     
     switch(key){
@@ -103,11 +109,14 @@ addListMember = function(key,attribute,value,num)
         list[leng] = value;
         storageSet("domainWhiteList",list);
             break;
+        case "norefer":
+        list[leng] = new noreferRule1(attribute,value);
+        storageSet("noRefererList",list);
         }   
         return true;
 }
 
-//key:"webreq","cookie","white"    num:要改变的第num个对象的  attribute：要改变的第num个对象的属性   value：改变后的值
+//key:"webreq","cookie","white","norefer"    num:要改变的第num个对象的  attribute：要改变的第num个对象的属性   value：改变后的值
 //Return Value:true,false
 changeListAttribute = function(key,num,attribute,value){
     var list = optionsGetList(key);
@@ -159,6 +168,9 @@ deleteList = function(key,num){
             break;
         case "white":
         storageSet("domainWhiteList",list);
+            break;
+        case "norefer":
+        storageSet("noRefererList",list);
             break;
         }
     

@@ -44,7 +44,7 @@ onBeforeRequestDealer = function onBeforeRequestDealer(details){
     instWebReq.url=details.url;
     instWebReq.domain=extractTool.domain(getTabUrl(details.tabId));
 
-    checkResult = ruleMan.testWebReq(instWebReq);
+    var checkResult = ruleMan.testWebReq(instWebReq);
     if(checkResult){
         return {cancel:true};
     }else{

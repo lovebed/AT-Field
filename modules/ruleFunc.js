@@ -4,7 +4,8 @@ ruleMan = {};
 ruleMan.cache = {
     webreq:new FifoCache(100),
     cook:new FifoCache(100),
-    white:new FifoCache(100)
+    white:new FifoCache(100),
+    norefer:new FifoCache(100)
 };
 
 ruleMan.rules = {};
@@ -19,7 +20,8 @@ ruleMan.refresh = function refresh(){
     ruleMan.cache = {
         webreq:new FifoCache(100),
         cook:new FifoCache(100),
-        white:new FifoCache(100)
+        white:new FifoCache(100),
+        norefer:new FifoCache(100)
     };
 }
 
@@ -27,7 +29,8 @@ ruleMan.loadRules = function loadRules(){
     var rules={
         webreq:optionsGetList("webreq"),
         cook:optionsGetList("cookie"),
-        white:optionsGetList("white")
+        white:optionsGetList("white"),
+        norefer:optionsGetList("norefer")
     };
     console.log(rules);
     for (var i=0,l=rules.webreq.length;i<l;i++){
@@ -45,6 +48,10 @@ ruleMan.loadRules = function loadRules(){
         rules.white[i]=ruleMan.transRule(rules.white[i]);
         console.log("transed white"+i);
     };
+    for (var i=0,l=rules.norefer.length;i<l;i++){
+        rules.norefer[i].url=ruleMan.transRule(rules.norefer[i].url);
+        rules.norefer[i].domain=ruleMan.transRule(rules.norefer[i].domain);
+    }
     ruleMan.rules=rules;
 };
 
@@ -61,6 +68,23 @@ ruleMan.transRule = function transRule(pattern){
 ruleMan.regExpMatch = function regExpMatch(url,pattern){
     var regexp = new RegExp(pattern);
     return regexp.test(url);
+};
+
+ruleMan.testWhite = function testWhite(url){
+    var cacheKey = url;
+    var result = ruleMan.cache.white.get(cacheKey);
+    if(result != undefined){
+        return result;
+    };
+    result = false;
+    for(var i=0,l=ruleMan.rules.white.length;i<l;i++){
+        if(regExpMatch(url,ruleMan.rules.white[i])){
+            result=true;
+            break;
+        };
+    };
+    ruleMan.cache.white.set(cacheKey,result);
+    return result;
 };
 
 ruleMan.testWebReq = function testWebReq(instWebReq){
@@ -114,19 +138,30 @@ ruleMan.testCook = function testCook(instCook){
     return result;
 };
 
-ruleMan.testWhite = function testWhite(url){
-    var cacheKey = url;
-    var result = ruleMan.cache.white.get(cacheKey);
-    if(result != undefined){
+ruleMan.testNoRefer = function testNoRefer(instRefer){
+    //返回值表示是否应被去除
+    var cacheKey = instRefer.url + " " + instRefer.domain;
+    var result = ruleMan.cache.norefer.get(cacheKey);
+    if(result!=undefined){
         return result;
     };
     result = false;
-    for(var i=0,l=ruleMan.rules.white.length;i<l;i++){
-        if(regExpMatch(url,ruleMan.rules.white[i])){
-            result=true;
-            break;
+    for(var i=0,l=ruleMan.rules.norefer.length;i<l;i++){
+        if(ruleMan.regExpMatch(instRefer.url,ruleMan.rules.norefer[i].url)){
+            if(ruleMan.rules.norefer[i].domain != ""){
+                if(ruleMan.rules.norefer[i].domain===instRefer.domain){
+                    result=false;
+                    break;
+                }else{
+                    result=true;
+                    break;
+                };
+            }else{
+                result=true;
+                break;
+            };
         };
     };
-    ruleMan.cache.white.set(cacheKey,result);
+    ruleMan.cache.norefer.set(cacheKey,result);
     return result;
 }
