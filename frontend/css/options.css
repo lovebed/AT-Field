@@ -89,20 +89,15 @@ padding-left:40px;
 border:solid 1px #abc;
 border-top:none;
 }
-.templateRow, .templateRow2, .templateRowtp, .newwebseq, .newcookieseq, .newwhiteseq{
+.templateRow, .templateRow2,.newwebseq, .newcookieseq, .newwhiteseq,.newnoreferseq{
 display: none;
 }
-.webReqRow1 .webDelete {
+.webReqRow .webDelete, .cookieRow .cookieDelete, .whiteRow .whiteDelete ,.noreferRow .noreferDelete{
 background: url("../../img/delete.png") center no-repeat;
 cursor: pointer;
 height: 100%;
 }
-.webReqRow .webDelete, .cookieRow .cookieDelete, .whiteRow .whiteDelete {
-background: url("../../img/delete.png") center no-repeat;
-cursor: pointer;
-height: 100%;
-}
-#newWebReqRow .webAdd, #newCookieRow .cookieAdd, #newWhiteRow .whiteAdd {
+#newWebReqRow .webAdd, #newCookieRow .cookieAdd, #newWhiteRow .whiteAdd, #newNoreferRow .noreferAdd{
 background: url("../../img/add.png") center no-repeat;
 cursor: pointer;
 height: 90%;
@@ -157,12 +152,12 @@ li{
 font-weight:50;
 }
 
-#addPattern, #addDomain, #addKeypat input{
+#addPattern, #addDomain, #addKeypat, #addreferURL, #addwhiteDomain input{
 width:100%;
 padding-left:3px;
 padding-right:-5px;
 }
-.tab21,.tab31,.tab41,.tab51{
+.tab21,.tab31,.tab41,.tab51,.tab61{
 
 border:solid 1px  #abc;
 width:auto;

@@ -8,24 +8,26 @@ function init()
 	$('#btnRefreshCookieRule').click(function () {refreshCookieRule(); });
 	$('#btnRefreshWhiteRule').click(function () {refreshWhiteRule(); });
 	$('#btnRefreshScriptLog').click(function () {refreshScriptLog(); });
-
+	$('#btnRefreshNoReferRule').click(function () {refreshNoreferRule(); });
 	$(".webAdd").click(function () {newOneWebReqRule(); });	
 	$(".cookieAdd").click(function () {newOneCookieRule(); });
 	$(".whiteAdd").click(function () {newOneWhiteRule(); });
+	$(".noreferAdd").click(function () {newOneNoreferRule(); });
 	showAllWebReqRule();
 	showAllCookieRule();
 	showAllWhiteRule();
-	showAllWebReqRuletp();
+	showAllNoreferRule();
 	showAllScriptLog();
+
 	$('.logRow').click(function () {
 		$(event.target.parentNode.nextSibling).toggle();
 	})
+
 	$(".webDelete").click(function () {webdeleteFn();});
 	$(".cookieDelete").click(function () {cookiedeleteFn();});
 	$(".whiteDelete").click(function () {whitedeleteFn();});
-//	$('#tab5').bind('tabsselect',function test(){
-//	alert("lds");
-//	});
+	$(".noreferDelete").click(function () {noreferdeleteFn();});
+
 }
 
 function getScriptLog(){
@@ -54,6 +56,11 @@ function refreshWebReqRule(){
 	removeAllWebReq();
 	showAllWebReqRule();
 	$(".webDelete").click(function () {webdeleteFn();});
+}
+function refreshNoreferRule(){
+	removeAllNorefer();
+	showAllNoreferRule();
+	$(".noreferDelete").click(function () {noreferdeleteFn();});
 }
 function refreshCookieRule(){
 	removeAllCookie();
@@ -86,7 +93,19 @@ function webdeleteFn(){
 		$(".webDelete").click(function () {webdeleteFn();});
 		refreshBGrules();
 	}
-
+}
+function noreferdeleteFn(){
+	var row = event.target.parentNode.parentNode;
+	var childrow = event.target.parentNode.parentNode.childNodes[1];
+	var num = $(childrow).text();
+	var r=confirm("确认删除？此操作将不可恢复！");
+	if (r==true){
+		deleteList("norefer",num);
+		removeAllNorefer();
+		showAllNoreferRule();
+		$(".noreferDelete").click(function () {noreferdeleteFn();});
+		refreshBGrules();
+	}
 }
 function cookiedeleteFn(){
 	var row = event.target.parentNode.parentNode;
@@ -117,6 +136,9 @@ function whitedeleteFn(){
 function removeAllWebReq(){
 	$('.webReqRow').remove();
 }
+function removeAllNorefer(){
+	$('.noreferRow').remove();
+}
 function removeAllCookie(){
 	$('.cookieRow').remove();
 }
@@ -134,6 +156,20 @@ function newOneWebReqRule(){
 		removeAllWebReq();
 		showAllWebReqRule();
 		$(".webDelete").click(function () {webdeleteFn();});
+		refreshBGrules();
+	}
+}
+function newOneNoreferRule(){
+	var url1 = $("#newNoreferRow #addreferURL").val();
+	var domian1 = $("#newNoreferRow #addwhiteDomain").val();
+	if(url1==''){
+		alert("输入不能为空！");
+
+	}else{
+		addListMember("norefer",["url","domain"],[url1,domian1]);
+		removeAllNorefer();
+		showAllNoreferRule();
+		$(".noreferDelete").click(function () {noreferdeleteFn();});
 		refreshBGrules();
 	}
 }
@@ -197,28 +233,33 @@ function addOneWebReqRule(j,k){
 		webRul.removeClass("domain").addClass("newdomain");
 		webRul.text(show);	
 }
-function showAllWebReqRuletp(){
-	var list = optionsGetList("webreq");
+function showAllNoreferRule(){
+	var list = optionsGetList("norefer");
 	var len = list.length;
 	for (var i = 0; i < len; i++) 
 	{
-		addOneWebReqRuletp(list,i);		
+		addOneNoreferRule(list,i);
 	}
 }
-function addOneWebReqRuletp(j,k){
-		var table = $("#webReqRulesTabletp");
-		var row = $("#webReqRulesTabletp .templateRowtp").clone();
-		row.removeClass("templateRowtp").addClass("webReqRow1");	
+function addOneNoreferRule(j,k){
+		var table = $("#noreferRulesTable");
+		var row = $("#noreferRulesTable .templateRow").clone();
+		row.removeClass("templateRow").addClass("noreferRow");	
 		table.append(row);		
 		var list = j;
-		var show = list[k]["pattern"];
-		var webRul = $(".webReqRow1 .pattern1");
-		webRul.removeClass("pattern1").addClass("newpattern1");		
+
+		var show = k;
+		var webRul = $(".noreferRow .noreferseq");
+		webRul.removeClass("noreferseq").addClass("newnoreferseq");		
+		webRul.text(show);	
+		var show = list[k]["url"];
+		var webRul = $(".noreferRow .referURL");
+		webRul.removeClass("referURL").addClass("newreferURL");		
 		webRul.text(show);
 
 		show = list[k]["domain"];
-		webRul = $(".webReqRow1 .domain1");
-		webRul.removeClass("domain1").addClass("newdomain1");
+		webRul = $(".noreferRow .whiteDomain");
+		webRul.removeClass("whiteDomain").addClass("newwhiteDomain");
 		webRul.text(show);	
 }
 function showAllCookieRule(){

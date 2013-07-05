@@ -141,7 +141,7 @@
 									<td class = "pattern"></td>
 									<td class = "domain"></td>
 									<td>
-										<div id="lds" class="webDelete" title="删除规则">&nbsp</div>
+										<div id="del" class="webDelete" title="删除规则">&nbsp</div>
 									</td>
 								</tr>
 								<tr id="newWebReqRow" class = "newRow">
@@ -211,7 +211,8 @@
 							</button>
 						</div>
 						<div id="tab6" >
-							<div class="tab21"><strong>本页显示的为引用源消除模块所使用的规则列表。</strong>
+							<div class="tab61">
+								<strong>本页显示的为引用源消除模块所使用的规则列表。</strong>
 								<br/>
 								<br/>
 								各列意义为：
@@ -221,7 +222,7 @@
 								②白名单域名：当引用该资源的网页的域名为白名单域名时，不进行引用源消除操作。支持通配符匹配。
 								<br/>
 								③添加/删除规则：点击红色的减号可删除本行规则，点击绿色的加号可以将文本框中写好的规则添加进列表中。</div>
-							<table  id="webReqRulesTabletp" class="rulesTable">
+							<table  id="noreferRulesTable" class="rulesTable">
 								<tr class="tableHeader">
 									<th style="width:395px" >
 										<span>跨域引用资源URL</span>
@@ -233,24 +234,25 @@
 										<span>添加/删除规则</span>
 									</th>
 								</tr>
-								<tr id="templateWebReqRow" class = "templateRowtp">
-									<td class = "pattern1"></td>
-									<td class = "domain1"></td>
+								<tr id="templateNoreferRow" class = "templateRow">
+									<td class = "noreferseq"></td>
+									<td class = "referURL"></td>
+									<td class = "whiteDomain"></td>
 									<td>
-										<div id="lds" class="webDelete" title="删除规则">&nbsp</div>
+										<div id="del" class="noreferDelete" title="删除规则">&nbsp</div>
 									</td>
 								</tr>
-								<tr id="newWebReqRow" class = "newRow">
-									<td class = "pattern">
-										<input id = "addPattern" name="pattern" type="text"></td>
-									<td class = "domain">
-										<input id = "addDomain"  name="domain" type="text"></td>
+								<tr id="newNoreferRow" class = "newRow">
+									<td class = "referURL">
+										<input id = "addreferURL" name="referURL" type="text"></td>
+									<td class = "whiteDomain">
+										<input id = "addwhiteDomain"  name="whiteDomain" type="text"></td>
 									<td>
-										<div class="webAdd" title="添加规则">&nbsp</div>
+										<div class="noreferAdd" title="添加规则">&nbsp</div>
 									</td>
 								</tr>
 							</table>
-							<button class="button" id="btnRefreshWebReqRule">
+							<button class="button" id="btnRefreshNoReferRule">
 
 								<img src="img/ref.png" style="width:16px;vertical-align:bottom;height:16px;" alt="refresh" />
 								<span>刷新列表</span>
